@@ -93,8 +93,26 @@
 .navbar__mobile a:hover { color: var(--blue); }
 .navbar__mobile .btn { width: 100%; margin-top: var(--sp-4); }
 
+.navbar__login-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--white-border);
+  color: var(--black-muted);
+  transition: border-color var(--transition), color var(--transition);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.navbar__login-icon:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
 @media (max-width: 768px) {
-  .navbar__links, .navbar__cta { display: none; }
+  .navbar__links, .navbar__cta, .navbar__login-icon { display: none; }
   .navbar__hamburger { display: flex; }
 }
 
