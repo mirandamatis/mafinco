@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mafinco — Gérez votre argent à deux, enfin simplement</title>
+  <meta name="description" content="Mafinco est l'app de gestion budgétaire pour couples. Suivez vos dépenses communes, équilibrez automatiquement les remboursements et investissez ensemble grâce à l'IA.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mafinco — Gérez votre argent à deux, enfin simplement">
+  <meta property="og:description" content="L'app de gestion budgétaire pour couples. Suivi des dépenses, remboursement auto, conseils IA.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mafinco.fr">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar" role="navigation" aria-label="Navigation principale">
+  <div class="navbar__inner">
+    <a href="/" class="navbar__logo">Mafinco</a>
+    <div class="navbar__links">
+      <a href="pages/fonctionnalites.html">Fonctionnalités</a>
+      <a href="pages/avis.html">Avis</a>
+      <a href="pages/partenaires.html">Partenaires</a>
+      <a href="pages/a-propos.html">À propos</a>
+    </div>
+    <a href="#download" class="btn btn--primary navbar__cta">Télécharger ↓</a>
+    <button class="navbar__hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="navbar__mobile" role="dialog" aria-label="Menu mobile">
+  <a href="pages/fonctionnalites.html">Fonctionnalités</a>
+  <a href="pages/avis.html">Avis</a>
+  <a href="pages/partenaires.html">Partenaires</a>
+  <a href="pages/a-propos.html">À propos</a>
+  <a href="#download" class="btn btn--primary">Télécharger ↓</a>
+</div>
+
+<main>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="section hero home-hero">
+  <div class="container">
+    <div class="hero__grid">
+
+      <div class="hero__content">
+        <div class="trust-pill fade-up" aria-label="4,8 sur 5 — 1247 couples nous font confiance">
+          <div class="stars stars--green" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <strong>4,8/5</strong>
+          <span>— 1&nbsp;247 couples nous font confiance</span>
+        </div>
+        <h1 class="fade-up">Gérez votre budget à deux, sans une seule dispute.</h1>
+        <p class="hero__lead fade-up">
+          L'app qui simplifie les dépenses partagées, calcule les remboursements automatiquement et vous conseille pour investir ensemble grâce à l'IA.
+        </p>
+
+        <div class="store-buttons fade-up" id="download">
+          <a href="#" class="btn-store btn-store--dark" data-cta-store="ios" data-cta-location="hero" aria-label="Télécharger sur App Store">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="btn-store__text"><small>Télécharger sur</small><span>App Store</span></div>
+          </a>
+          <a href="#" class="btn-store btn-store--light" data-cta-store="android" data-cta-location="hero" aria-label="Télécharger sur Google Play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 23.76a2 2 0 0 1-1.01-1.77V2.01C2.17 1.3 2.6.7 3.18.24l.1-.07 12.04 11.75-.1.1L3.18 23.76zm14.44-8.63l-2.89-2.82 2.9-2.83 3.28 1.88c.93.54.93 1.41 0 1.95l-3.29 1.82zM4.47 1.07l9.76 9.52-2.79 2.72L4.47 1.07zm0 21.86 6.97-12.24 2.79 2.72-9.76 9.52z"/></svg>
+            <div class="btn-store__text"><small>Disponible sur</small><span>Google Play</span></div>
+          </a>
+        </div>
+
+        <div class="hero__proofs fade-up">
+          <span><b></b>Gratuit pendant 30 jours</span>
+          <span><b></b>Sans engagement</span>
+        </div>
+      </div>
+
+      <div class="hero__visual hero-image fade-up" aria-label="Aperçus de l'application Mafinco">
+        <img src="assets/icons/Téléphone home page.png" alt="Aperçus de l'application Mafinco sur mobile" class="hero-phones-img">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMMENT ÇA MARCHE
+     ============================================================ -->
+<section class="section how-it-works">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-kicker fade-up">Simple en 3 étapes</span>
+      <h2 class="fade-up">Comment ça marche&nbsp;?</h2>
+    </div>
+    <div class="steps-grid stagger">
+      <div class="steps-grid__line" aria-hidden="true"></div>
+
+      <div class="step-card fade-up">
+        <div class="step-card__number">1</div>
+        <h3>Saisissez vos dépenses communes</h3>
+        <p>Loyer, courses, restaurant… Ajoutez une dépense en 5 secondes et partagez-la avec votre partenaire.</p>
+      </div>
+
+      <div class="step-card fade-up">
+        <div class="step-card__number">2</div>
+        <h3>L'app calcule qui doit quoi</h3>
+        <p>Mafinco analyse vos revenus et vos dépenses pour proposer un équilibre juste, sans discussions.</p>
+      </div>
+
+      <div class="step-card fade-up">
+        <div class="step-card__number">3</div>
+        <h3>Investissez ensemble grâce à l'IA</h3>
+        <p>Notre IA analyse votre profil de couple et vous recommande les produits financiers adaptés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4 FONCTIONNALITÉS
+     ============================================================ -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-title">
+      <h2 class="fade-up">Tout ce dont un couple a besoin</h2>
+      <p class="fade-up" style="transition-delay:0.1s;">Quatre fonctionnalités conçues pour éliminer les tensions financières et construire ensemble.</p>
+    </div>
+    <div class="feature-grid stagger">
+
+      <div class="card feature-card fade-up">
+        <div class="icon-wrap">
+          <i data-lucide="receipt"></i>
+        </div>
+        <h4>Suivi des dépenses</h4>
+        <p>Chaque dépense commune est catégorisée et assignée automatiquement.</p>
+      </div>
+
+      <div class="card feature-card fade-up">
+        <div class="icon-wrap">
+          <i data-lucide="calculator"></i>
+        </div>
+        <h4>Remboursement auto</h4>
+        <p>Plus de "tu me dois combien ?" — Mafinco fait le calcul pour vous.</p>
+      </div>
+
+      <div class="card feature-card fade-up">
+        <div class="icon-wrap">
+          <i data-lucide="bar-chart-2"></i>
+        </div>
+        <h4>Graphiques & tendances</h4>
+        <p>Visualisez où va votre argent, mois après mois, ensemble.</p>
+      </div>
+
+      <div class="card feature-card fade-up">
+        <div class="icon-wrap">
+          <i data-lucide="sparkles"></i>
+        </div>
+        <h4>Conseils IA</h4>
+        <p>PEA, assurance-vie, prêt immo — l'IA vous guide vers les meilleurs produits.</p>
+      </div>
+
+    </div>
+    <div class="section-action">
+      <a href="pages/fonctionnalites.html" class="btn btn--ghost">
+        Voir toutes les fonctionnalités →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PERSONAS — Pour chaque couple
+     ============================================================ -->
+<section class="section personas">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-kicker fade-up">Cas d'usage</span>
+      <h2 class="fade-up">Mafinco s'adapte à votre situation</h2>
+    </div>
+    <div class="grid-3 stagger">
+
+      <div class="card persona-card fade-up">
+        <div class="badge">Revenus différents</div>
+        <h3>"On a arrêté de se disputer sur les courses."</h3>
+        <p>
+          Léa gagne 2&nbsp;200&nbsp;€ et Thomas 3&nbsp;100&nbsp;€. Mafinco répartit les dépenses proportionnellement, sans qu'on ait à le calculer.
+        </p>
+        <div class="avis-card__header">
+          <div class="avis-card__avatar">LA</div>
+          <div class="avis-card__meta">
+            <p class="avis-card__name">Léa A.</p>
+            <p class="avis-card__location">Lyon · 27 ans</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card persona-card fade-up">
+        <div class="badge">Épargnants</div>
+        <h3>"L'IA nous a trouvé le PEA parfait. 3,2% cette année."</h3>
+        <p>
+          On économisait mais on ne savait pas où placer notre argent. Mafinco nous a suggéré un PEA adapté à notre horizon et à notre tolérance au risque.
+        </p>
+        <div class="avis-card__header">
+          <div class="avis-card__avatar">JM</div>
+          <div class="avis-card__meta">
+            <p class="avis-card__name">Julien M.</p>
+            <p class="avis-card__location">Paris · 36 ans</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card persona-card fade-up">
+        <div class="badge">Projet immo</div>
+        <h3>"On a su en 3 clics qu'on pouvait emprunter 350&nbsp;000&nbsp;€."</h3>
+        <p>
+          La simulation a tenu compte de nos deux salaires et de nos charges réelles. Notre conseiller Pretto a confirmé le chiffre à 5% près.
+        </p>
+        <div class="avis-card__header">
+          <div class="avis-card__avatar">CB</div>
+          <div class="avis-card__meta">
+            <p class="avis-card__name">Camille B.</p>
+            <p class="avis-card__location">Bordeaux · 30 ans</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AVIS APERÇU
+     ============================================================ -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="review-head">
+      <div>
+        <span class="section-kicker fade-up">Avis utilisateurs</span>
+        <h2 class="fade-up">Ils ont réconcilié leur couple avec l'argent</h2>
+        <div class="rating-badge fade-up">
+          <div class="stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <strong>4,8 / 5</strong>
+          <span>· 2&nbsp;400 avis cumulés</span>
+        </div>
+      </div>
+      <a href="pages/avis.html" class="btn btn--outline">Voir tous les avis</a>
+    </div>
+
+    <div class="grid-3 stagger">
+      <div class="avis-card fade-up">
+        <div class="avis-card__header">
+          <div class="avis-card__avatar">LA</div>
+          <div class="avis-card__meta">
+            <p class="avis-card__name">Léa A.</p>
+            <p class="avis-card__location">Lyon · 27 ans · 8 mois</p>
+          </div>
+          <div class="stars" style="margin-left:auto;" aria-label="5 étoiles">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+        <p class="avis-card__title">"On a enfin arrêté de se disputer sur les courses."</p>
+        <p class="avis-card__text">Avant Mafinco, on passait 20 minutes par mois à reconcilier nos comptes. Maintenant c'est automatique.</p>
+        <div class="badge">Jeune couple</div>
+      </div>
+
+      <div class="avis-card fade-up">
+        <div class="avis-card__header">
+          <div class="avis-card__avatar">JM</div>
+          <div class="avis-card__meta">
+            <p class="avis-card__name">Julien M.</p>
+            <p class="avis-card__location">Paris · 36 ans · 1 an</p>
+          </div>
+          <div class="stars" style="margin-left:auto;" aria-label="5 étoiles">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+        <p class="avis-card__title">"L'IA nous a trouvé le PEA parfait. 3,2% cette année."</p>
+        <p class="avis-card__text">On économisait mais on ne savait pas où placer. Mafinco a recommandé un PEA chez Fortuneo avec des ETF World.</p>
+        <div class="badge">Épargnants</div>
+      </div>
+
+      <div class="avis-card fade-up">
+        <div class="avis-card__header">
+          <div class="avis-card__avatar">CB</div>
+          <div class="avis-card__meta">
+            <p class="avis-card__name">Camille B.</p>
+            <p class="avis-card__location">Bordeaux · 30 ans · 4 mois</p>
+          </div>
+          <div class="stars" style="margin-left:auto;" aria-label="5 étoiles">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+        <p class="avis-card__title">"La simulation nous a montré qu'on pouvait emprunter 350&nbsp;000 €."</p>
+        <p class="avis-card__text">Notre conseiller Pretto a confirmé le chiffre à 5% près. Le dossier le plus préparé de son portefeuille.</p>
+        <div class="badge">Projet immo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section class="section final-cta">
+  <div class="container">
+    <h2 class="fade-up">Prêt·e à simplifier votre vie financière&nbsp;?</h2>
+    <p class="fade-up">
+      Téléchargez Mafinco gratuitement et commencez à gérer votre argent à deux en moins de 3 minutes.
+    </p>
+    <div class="store-buttons fade-up">
+      <a href="#" class="btn-store" data-cta-store="ios" data-cta-location="cta_final">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="btn-store__text"><small>Télécharger sur</small><span>App Store</span></div>
+      </a>
+      <a href="#" class="btn-store" data-cta-store="android" data-cta-location="cta_final">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 23.76a2 2 0 0 1-1.01-1.77V2.01C2.17 1.3 2.6.7 3.18.24l.1-.07 12.04 11.75-.1.1L3.18 23.76zm14.44-8.63l-2.89-2.82 2.9-2.83 3.28 1.88c.93.54.93 1.41 0 1.95l-3.29 1.82zM4.47 1.07l9.76 9.52-2.79 2.72L4.47 1.07zm0 21.86 6.97-12.24 2.79 2.72-9.76 9.52z"/></svg>
+        <div class="btn-store__text"><small>Télécharger sur</small><span>Google Play</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="logo">Mafinco</span>
+        <p>L'app financière des couples modernes.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="pages/fonctionnalites.html">Fonctionnalités</a></li>
+          <li><a href="#">Sécurité</a></li>
+          <li><a href="#">Nouveautés</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="pages/a-propos.html">À propos</a></li>
+          <li><a href="pages/presse.html">Presse</a></li>
+          <li><a href="pages/partenaires.html">Partenaires</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="pages/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="pages/confidentialite.html">Confidentialité</a></li>
+          <li><a href="#">CGU</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Mafinco SAS · Tous droits réservés</span>
+      <span>Fait avec ♥ pour les couples français</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+</body>
+</html>

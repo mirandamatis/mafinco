@@ -1,0 +1,82 @@
+:root {
+  /* Blue */
+  --blue:         #2347E5;
+  --blue-hover:   #1B3BC9;
+  --blue-active:  #1530AD;
+  --blue-light:   #E8EDFB;
+  --blue-lighter: #F4F6FE;
+
+  /* Black */
+  --black:        #0D0D0D;
+  --black-soft:   #1A1A1A;
+  --black-muted:  #2D2D2D;
+  --black-mid:    #737373;
+
+  /* White */
+  --white:        #FFFFFF;
+  --white-chalk:  #FAFAFA;
+  --white-cloud:  #F5F5F5;
+  --white-border: #E5E5E5;
+
+  /* Semantic */
+  --success:      #16A34A;
+  --success-light:#DCFCE7;
+  --mint:         #56C58B;
+  --mint-dark:    #2F8C69;
+  --mint-light:   #E7F7EF;
+  --error:        #DC2626;
+  --error-light:  #FFF5F5;
+  --warning:      #D97706;
+
+  /* Typography */
+  --font-heading: 'DM Sans', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* Font sizes */
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-lg:   18px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  30px;
+  --text-4xl:  36px;
+  --text-5xl:  48px;
+  --text-6xl:  60px;
+
+  /* Spacing */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  /* Radius */
+  --r-sm:   4px;
+  --r-md:   8px;
+  --r-lg:   12px;
+  --r-xl:   16px;
+  --r-2xl:  24px;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.12);
+  --shadow-xl:  0 16px 48px rgba(0,0,0,0.14);
+  --shadow-focus: 0 0 0 3px rgba(35,71,229,0.20);
+
+  /* Transitions */
+  --transition: 0.2s ease;
+
+  /* Layout */
+  --max-width: 1200px;
+  --nav-height: 72px;
+}

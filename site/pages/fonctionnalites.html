@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fonctionnalités Mafinco — Suivi, remboursement auto, graphiques et conseils IA</title>
+  <meta name="description" content="Découvrez les 4 fonctionnalités de Mafinco : suivi des dépenses communes, remboursement automatique, graphiques d'analyse et conseils d'investissement personnalisés par IA.">
+
+  <meta property="og:title" content="Fonctionnalités Mafinco — Gérez votre argent à deux">
+  <meta property="og:description" content="Suivi des dépenses, remboursements automatiques, graphiques et conseils IA pour couples.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mafinco.fr/fonctionnalites">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="Navigation principale">
+  <div class="navbar__inner">
+    <a href="../index.html" class="navbar__logo">Mafinco</a>
+    <div class="navbar__links">
+      <a href="fonctionnalites.html" class="active">Fonctionnalités</a>
+      <a href="avis.html">Avis</a>
+      <a href="partenaires.html">Partenaires</a>
+      <a href="a-propos.html">À propos</a>
+    </div>
+    <a href="#download" class="btn btn--primary navbar__cta">Télécharger ↓</a>
+    <button class="navbar__hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="navbar__mobile" role="dialog" aria-label="Menu mobile">
+  <a href="fonctionnalites.html" class="active">Fonctionnalités</a>
+  <a href="avis.html">Avis</a>
+  <a href="partenaires.html">Partenaires</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="#download" class="btn btn--primary">Télécharger ↓</a>
+</div>
+
+<main>
+
+<section class="page-hero features-hero">
+  <div class="container">
+    <nav class="breadcrumb fade-up" aria-label="Fil d'Ariane">
+      <a href="../index.html">Accueil</a>
+      <span aria-hidden="true">/</span>
+      <span>Fonctionnalités</span>
+    </nav>
+    <div class="features-hero__grid">
+      <div class="features-hero__content">
+        <span class="section-kicker fade-up">Fonctionnalités</span>
+        <h1 class="fade-up">Tout ce dont votre couple a besoin pour gérer son argent.</h1>
+        <p class="fade-up">
+          Quatre fonctionnalités conçues pour éliminer les tensions financières et aider votre couple à construire ensemble.
+        </p>
+        <div class="features-hero__actions fade-up">
+          <a href="#download" class="btn btn--primary">Télécharger gratuitement ↓</a>
+          <a href="#features" class="btn btn--outline">Voir les outils</a>
+        </div>
+      </div>
+      <div class="features-hero__panel fade-up" aria-label="Résumé des fonctionnalités">
+        <div class="features-hero__item">
+          <i data-lucide="receipt" aria-hidden="true"></i>
+          <span>Dépenses communes</span>
+        </div>
+        <div class="features-hero__item">
+          <i data-lucide="calculator" aria-hidden="true"></i>
+          <span>Calcul automatique</span>
+        </div>
+        <div class="features-hero__item">
+          <i data-lucide="bar-chart-2" aria-hidden="true"></i>
+          <span>Graphiques clairs</span>
+        </div>
+        <div class="features-hero__item">
+          <i data-lucide="sparkles" aria-hidden="true"></i>
+          <span>Conseils IA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-detail feature-detail--white" id="features">
+  <div class="container">
+    <div class="feature-detail__grid">
+      <div class="app-preview app-preview--expense fade-up" aria-label="Aperçu suivi des dépenses">
+        <div class="app-preview__top">
+          <span>Nouvelle dépense</span>
+          <strong>5 sec</strong>
+        </div>
+        <div class="expense-form">
+          <label>Montant</label>
+          <div class="expense-form__amount">68,90 €</div>
+          <div class="expense-form__row">
+            <span>Catégorie</span><strong>Courses</strong>
+          </div>
+          <div class="expense-form__row">
+            <span>Payé par</span><strong>Thomas</strong>
+          </div>
+          <div class="split-choice">
+            <button class="active" type="button">Proportionnel</button>
+            <button type="button">50 / 50</button>
+          </div>
+        </div>
+      </div>
+      <div class="feature-detail__content fade-up">
+        <span class="badge">Fonctionnalité 1</span>
+        <h2>Chaque centime compte. On le compte pour vous.</h2>
+        <p>Ajoutez une dépense en 5 secondes : montant, catégorie, payeur. Mafinco classe automatiquement loyer, courses, restaurants, voyages et vous montre en temps réel qui a dépensé quoi ce mois-ci.</p>
+        <ul class="check-list">
+          <li><i data-lucide="check" aria-hidden="true"></i>Catégorisation automatique par IA</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Historique consultable par les deux partenaires</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Notifications instantanées à chaque ajout</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Import depuis vos comptes bancaires</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-detail feature-detail--tint">
+  <div class="container">
+    <div class="feature-detail__grid feature-detail__grid--reverse">
+      <div class="feature-detail__content fade-up">
+        <span class="badge">Fonctionnalité 2</span>
+        <h2>Plus jamais "tu me dois combien ?"</h2>
+        <p>Mafinco analyse les revenus de chaque partenaire et les dépenses du mois, puis calcule le remboursement idéal — proportionnel ou 50/50, selon votre choix. Un virement en un clic et c'est réglé.</p>
+        <ul class="check-list">
+          <li><i data-lucide="check" aria-hidden="true"></i>Répartition proportionnelle ou 50/50</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Calcul mis à jour à chaque dépense</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Virement intégré ou suggestion Lydia</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Historique des remboursements</li>
+        </ul>
+      </div>
+      <div class="app-preview app-preview--balance fade-up" aria-label="Aperçu remboursement automatique">
+        <div class="mini-balance">
+          <span>Solde du mois</span>
+          <strong>42,50 €</strong>
+          <p>Léa te doit ce montant pour équilibrer juin.</p>
+          <button type="button">Rembourser maintenant</button>
+        </div>
+        <div class="mini-history">
+          <div><span>Courses</span><strong>+18,40 €</strong></div>
+          <div><span>Loyer</span><strong>-24,10 €</strong></div>
+          <div><span>Restaurant</span><strong>+8,20 €</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-detail feature-detail--white">
+  <div class="container">
+    <div class="feature-detail__grid">
+      <div class="app-preview app-preview--charts fade-up" aria-label="Aperçu graphiques et tendances">
+        <div class="chart-card">
+          <div class="chart-card__head">
+            <span>Dépenses de juin</span>
+            <strong>-12%</strong>
+          </div>
+          <div class="donut-chart" aria-hidden="true"></div>
+          <div class="chart-legend">
+            <span><b></b>Courses 42%</span>
+            <span><b></b>Loyer 35%</span>
+            <span><b></b>Loisirs 23%</span>
+          </div>
+        </div>
+        <div class="trend-bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="feature-detail__content fade-up">
+        <span class="badge">Fonctionnalité 3</span>
+        <h2>Visualisez où va vraiment votre argent.</h2>
+        <p>Des graphiques clairs qui transforment vos dépenses en insights. Comparez mois par mois, identifiez les postes qui dérapent et fixez des objectifs d'épargne ensemble.</p>
+        <ul class="check-list">
+          <li><i data-lucide="check" aria-hidden="true"></i>Graphiques mensuels et annuels par catégorie</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Comparaison avant/après pour mesurer vos progrès</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Alertes budget personnalisables</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Export PDF pour banque ou impôts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature-detail feature-detail--tint">
+  <div class="container">
+    <div class="feature-detail__grid feature-detail__grid--reverse">
+      <div class="feature-detail__content fade-up">
+        <span class="badge">Fonctionnalité 4</span>
+        <h2>Un conseiller financier dans votre poche.</h2>
+        <p>Notre IA analyse votre profil de couple — revenus, dépenses, projets, tolérance au risque — et vous recommande les produits financiers les plus adaptés.</p>
+        <ul class="check-list">
+          <li><i data-lucide="check" aria-hidden="true"></i>Recommandations personnalisées selon votre profil</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Comparaison des meilleurs produits du marché</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Simulation de capacité d'emprunt</li>
+          <li><i data-lucide="check" aria-hidden="true"></i>Mise à jour automatique selon vos finances</li>
+        </ul>
+        <p class="legal-note">Les recommandations sont fournies à titre informatif et ne constituent pas un conseil en investissement au sens réglementaire.</p>
+      </div>
+      <div class="app-preview app-preview--ai fade-up" aria-label="Aperçu conseils IA">
+        <div class="ai-card">
+          <div class="ai-card__icon"><i data-lucide="sparkles" aria-hidden="true"></i></div>
+          <p>Avec votre profil, un PEA adapté à votre horizon pourrait soutenir votre objectif apport en 4 ans.</p>
+        </div>
+        <div class="recommendation-card">
+          <span>Conseil du mois</span>
+          <strong>PEA recommandé</strong>
+          <div class="recommendation-card__meter"><span></span></div>
+          <small>Compatibilité profil : 86%</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="partners-strip">
+  <div class="container">
+    <p>Connecté aux meilleures banques et courtiers</p>
+    <div class="partner-logos" aria-label="Partenaires compatibles">
+      <span>Boursorama</span>
+      <span>Fortuneo</span>
+      <span>Nalo</span>
+      <span>Yomoni</span>
+      <span>Meilleurtaux</span>
+      <span>Pretto</span>
+    </div>
+  </div>
+</section>
+
+<section class="section final-cta" id="download">
+  <div class="container">
+    <h2 class="fade-up">Prêt·e à tester ?</h2>
+    <p class="fade-up">Gratuit, sans carte bancaire, disponible sur iOS et Android.</p>
+    <div class="store-buttons fade-up">
+      <a href="#" class="btn-store" data-cta-store="ios" data-cta-location="features_final">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="btn-store__text"><small>Télécharger sur</small><span>App Store</span></div>
+      </a>
+      <a href="#" class="btn-store" data-cta-store="android" data-cta-location="features_final">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.18 23.76a2 2 0 0 1-1.01-1.77V2.01C2.17 1.3 2.6.7 3.18.24l.1-.07 12.04 11.75-.1.1L3.18 23.76zm14.44-8.63l-2.89-2.82 2.9-2.83 3.28 1.88c.93.54.93 1.41 0 1.95l-3.29 1.82zM4.47 1.07l9.76 9.52-2.79 2.72L4.47 1.07zm0 21.86 6.97-12.24 2.79 2.72-9.76 9.52z"/></svg>
+        <div class="btn-store__text"><small>Télécharger sur</small><span>Google Play</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="logo">Mafinco</span>
+        <p>L'app financière des couples modernes.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="fonctionnalites.html">Fonctionnalités</a></li>
+          <li><a href="#">Sécurité</a></li>
+          <li><a href="#">Nouveautés</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="presse.html">Presse</a></li>
+          <li><a href="partenaires.html">Partenaires</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+          <li><a href="#">CGU</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Mafinco SAS · Tous droits réservés</span>
+      <span>Fait avec ♥ pour les couples français</span>
+    </div>
+  </div>
+</footer>
+
+<a class="mobile-sticky-cta" href="#download">Télécharger l'app</a>
+
+<script src="../js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+</body>
+</html>

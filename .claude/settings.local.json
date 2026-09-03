@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /Users/mirandamatis/Desktop/AgentIA-WebsiteBuilder-main/site && ls -la)",
+      "Bash(ls /Users/mirandamatis/Desktop/)",
+      "Bash(git init *)",
+      "Bash(git branch *)"
+    ]
+  }
+}
