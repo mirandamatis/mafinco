@@ -357,6 +357,9 @@
       font-family: var(--font-head);
       font-size: 16px;
       font-weight: 700;
+      display: block;
+      text-align: center;
+      text-decoration: none;
       border: none;
       border-radius: var(--r);
       cursor: pointer;
@@ -378,6 +381,9 @@
       border-radius: var(--r);
       cursor: pointer;
       transition: border-color .18s;
+      display: block;
+      text-align: center;
+      text-decoration: none;
     }
 
     .btn-discover-sec:hover { border-color: var(--navy); }
@@ -644,8 +650,8 @@
     <h2 class="result-title">Votre espace est prêt !</h2>
     <p class="result-sub">On a personnalisé Mafinco pour vous deux. Voici ce qu'on va vous préparer :</p>
     <div class="result-pills" id="resultPills"></div>
-    <button class="btn-discover" onclick="window.location.href='dashboard.html'">Découvrir mon tableau de bord →</button>
-    <button class="btn-discover-sec" onclick="window.location.href='../index.html'">Retour à l'accueil</button>
+    <a href="dashboard.html" class="btn-discover" id="goToDashboard">Découvrir mon tableau de bord →</a>
+    <a href="../index.html" class="btn-discover-sec">Retour à l'accueil</a>
   </div>
 
   <!-- Bouton Suivant -->
