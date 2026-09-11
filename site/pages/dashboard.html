@@ -622,6 +622,30 @@
     .alert-text { font-size: 13px; color: #92400e; line-height: 1.5; }
     .alert-text strong { font-weight: 700; display: block; margin-bottom: 2px; }
 
+    /* ── Burger button (mobile only) ── */
+    .burger {
+      display: none;
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: var(--off);
+      border: 1px solid var(--border);
+      align-items: center; justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .burger svg { width: 18px; height: 18px; color: var(--navy); }
+
+    /* Overlay */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(18,32,63,.45);
+      z-index: 99;
+      backdrop-filter: blur(2px);
+    }
+    .sidebar-overlay.show { display: block; }
+
     /* ══════════════════════════════
        RESPONSIVE
     ══════════════════════════════ */
@@ -635,11 +659,24 @@
     }
 
     @media (max-width: 700px) {
-      .sidebar { transform: translateX(-100%); }
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform .3s cubic-bezier(.4,0,.2,1);
+        z-index: 100;
+      }
+      .sidebar.open { transform: translateX(0); }
       .main { margin-left: 0; }
       .grid-3, .grid-2 { grid-template-columns: 1fr; }
-      .content { padding: 16px; }
-      .topbar { padding: 0 16px; }
+      .content { padding: 16px; gap: 16px; }
+      .topbar {
+        padding: 0 16px;
+        height: 56px;
+        gap: 10px;
+      }
+      .topbar__left h1 { font-size: 15px; }
+      .topbar__left p { display: none; }
+      .burger { display: flex; }
+      .period-select { display: none; }
     }
   </style>
 </head>
@@ -706,11 +743,19 @@
   <!-- ═══ MAIN ═══ -->
   <main class="main">
 
+    <!-- Overlay sidebar mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <!-- Topbar -->
     <div class="topbar">
-      <div class="topbar__left">
-        <h1>Bonjour Camille 👋</h1>
-        <p>Voici votre résumé financier du mois de septembre</p>
+      <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1;">
+        <button class="burger" id="burgerBtn" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="topbar__left">
+          <h1>Bonjour Camille 👋</h1>
+          <p>Voici votre résumé financier du mois de septembre</p>
+        </div>
       </div>
       <div class="topbar__right">
         <select class="period-select">
@@ -976,6 +1021,27 @@
   </main>
 
 </div>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+
+  function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+</script>
 
 </body>
 </html>
