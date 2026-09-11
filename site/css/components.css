@@ -370,7 +370,7 @@
 .hero__visual {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   transition-delay: 0.14s;
 }
 
@@ -617,7 +617,7 @@
   min-height: 820px;
   padding-top: calc(var(--nav-height) + var(--sp-10));
   padding-bottom: var(--sp-16);
-  background: linear-gradient(108deg, #EEF8F2 0%, #F6F8FF 52%, #FFFFFF 100%);
+  background: linear-gradient(108deg, #E8EDFB 0%, #F4F6FE 52%, #FFFFFF 100%);
 }
 
 .home-hero::after {
@@ -649,7 +649,7 @@
   margin-top: -0.46em;
   margin-left: 0.04em;
   border-radius: var(--r-full);
-  background: rgba(86,197,139,0.28);
+  background: rgba(35,71,229,0.15);
 }
 
 .home-hero .hero__lead {
@@ -681,7 +681,7 @@
 .stars--green svg {
   width: 16px;
   height: 16px;
-  fill: var(--mint);
+  fill: #F5A623;
 }
 
 .trust-pill strong {
@@ -746,30 +746,75 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--mint);
+  background: var(--blue);
 }
 
-.hero-phones {
-  min-height: 560px;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-  transform: scale(0.75);
-  transform-origin: center center;
+/* ── Hero 3 téléphones ── */
+.hero-phones-scene {
+  position: relative;
+  width: 760px;
+  height: 720px;
+  flex-shrink: 0;
+  /* Scale down to ~547px without squishing content */
+  transform: scale(0.72);
+  transform-origin: top left;
+  margin-right: calc(-760px * 0.28);
+  margin-bottom: calc(-720px * 0.28);
 }
 
-.hero-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Téléphone générique */
+.hp {
+  position: absolute;
+}
+.hp--left  { left: 40px;  top: 90px; transform: rotate(-9deg); z-index: 1; }
+.hp--right { right: 40px; top: 90px; transform: rotate(9deg);  z-index: 1; }
+.hp--center { left: 50%; top: 0;   transform: translateX(-50%); z-index: 2; }
+
+.hp__shell {
+  width: 220px;
+  height: 450px;
+  background: #12203f;
+  border-radius: 36px;
+  padding: 10px;
+  box-shadow: 0 40px 70px -20px rgba(18,32,63,0.45);
+}
+.hp__shell--lg {
+  width: 260px;
+  height: 530px;
 }
 
-.hero-phones-img {
+.hp__screen {
   width: 100%;
-  max-width: 640px;
-  height: auto;
-  object-fit: contain;
-  display: block;
+  height: 100%;
+  background: #f6f7fb;
+  border-radius: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.hp__screen--lg { border-radius: 26px; }
+
+.hp__notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  background: #12203f;
+  border-radius: 0 0 14px 14px;
+}
+.hp__notch--lg { width: 90px; height: 22px; }
+
+.hp__content {
+  padding: 32px 16px 0 16px;
+  height: 100%;
+  overflow: hidden;
+}
+.hp__time {
+  font-size: 11px;
+  color: #12203f;
+  font-weight: 600;
+  margin-bottom: 14px;
 }
 
 .hero-phone {
@@ -1847,9 +1892,23 @@
   .feature-block { grid-template-columns: 1fr; gap: var(--sp-8); direction: ltr; }
   .feature-block__title { font-size: var(--text-3xl); }
   .feature-block__mockup { max-width: 280px; }
+
+  .hero-phones-scene {
+    transform: scale(0.42);
+    transform-origin: top center;
+    margin-right: 0;
+    margin-bottom: calc(-720px * 0.58);
+  }
 }
 
 @media (max-width: 1024px) {
+  .hero-phones-scene {
+    transform: scale(0.56);
+    transform-origin: top center;
+    margin-right: 0;
+    margin-bottom: calc(-720px * 0.44);
+  }
+
   .hero__grid {
     grid-template-columns: 1fr;
     gap: var(--sp-12);

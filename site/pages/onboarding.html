@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mafinco — Bienvenue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #2347E5;
+      --blue-hover: #1B3BC9;
+      --blue-light: #E8EDFB;
+      --blue-lighter: #F4F6FE;
+      --navy: #12203f;
+      --navy-soft: #1a2d54;
+      --white: #ffffff;
+      --off: #f6f7fb;
+      --muted: #8b93ab;
+      --text: #12203f;
+      --border: #e4e8f0;
+      --font-head: 'DM Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --r: 16px;
+      --r-lg: 24px;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: var(--font-body);
+      background: var(--off);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Shell app ── */
+    .app-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 16px 32px;
+      background: linear-gradient(160deg, #eef1fb 0%, #f6f7fb 60%, #ffffff 100%);
+    }
+
+    /* ── Header ── */
+    .app-header {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0 12px;
+    }
+
+    .app-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .app-logo svg { width: 22px; height: 22px; }
+
+    .app-skip {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px 0;
+      transition: color .2s;
+    }
+    .app-skip:hover { color: var(--navy); }
+
+    /* ── Progress bar ── */
+    .progress-wrap {
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .progress-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .progress-count {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--blue);
+      border-radius: 99px;
+      transition: width .45s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── Card question ── */
+    .question-card {
+      width: 100%;
+      max-width: 480px;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      box-shadow: 0 12px 40px rgba(18,32,63,.08);
+      animation: slideIn .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .question-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 99px;
+      margin-bottom: 20px;
+      letter-spacing: .03em;
+    }
+
+    .question-text {
+      font-family: var(--font-head);
+      font-size: clamp(20px, 5vw, 26px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .question-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 28px;
+    }
+
+    /* ── Réponses ── */
+    .answers {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .answer-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+      background: var(--off);
+      border: 2px solid transparent;
+      border-radius: var(--r);
+      cursor: pointer;
+      text-align: left;
+      transition: border-color .18s, background .18s, box-shadow .18s;
+      width: 100%;
+      position: relative;
+    }
+
+    .answer-btn:hover {
+      border-color: var(--blue-light);
+      background: var(--blue-lighter);
+    }
+
+    .answer-btn.selected {
+      border-color: var(--blue);
+      background: var(--blue-lighter);
+      box-shadow: 0 0 0 3px rgba(35,71,229,.08);
+    }
+
+    .answer-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      transition: background .18s;
+    }
+
+    .answer-btn.selected .answer-icon {
+      background: var(--blue);
+    }
+
+    .answer-body {
+      flex: 1;
+    }
+
+    .answer-title {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .answer-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .answer-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color .18s, background .18s;
+    }
+
+    .answer-btn.selected .answer-check {
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+
+    .answer-btn.selected .answer-check svg { display: block; }
+    .answer-check svg { display: none; }
+
+    /* ── Bouton suivant ── */
+    .next-wrap {
+      width: 100%;
+      max-width: 480px;
+      margin-top: 20px;
+    }
+
+    .btn-next {
+      width: 100%;
+      padding: 17px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--r);
+      cursor: pointer;
+      transition: background .18s, transform .1s, opacity .18s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-next:hover:not(:disabled) { background: var(--blue-hover); }
+    .btn-next:active:not(:disabled) { transform: scale(.98); }
+    .btn-next:disabled { opacity: .4; cursor: not-allowed; }
+
+    .btn-next svg { width: 18px; height: 18px; }
+
+    /* ── Écran résultat ── */
+    .result-screen {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      padding-top: 12px;
+      animation: slideIn .4s cubic-bezier(.4,0,.2,1);
+    }
+
+    .result-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 24px;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 16px 40px rgba(35,71,229,.3);
+    }
+
+    .result-icon svg { width: 40px; height: 40px; }
+
+    .result-title {
+      font-family: var(--font-head);
+      font-size: clamp(24px, 6vw, 32px);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+
+    .result-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .result-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+
+    .result-pill {
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 99px;
+    }
+
+    .btn-discover {
+      width: 100%;
+      padding: 17px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--r);
+      cursor: pointer;
+      transition: background .18s;
+      margin-bottom: 12px;
+    }
+
+    .btn-discover:hover { background: var(--navy-soft); }
+
+    .btn-discover-sec {
+      width: 100%;
+      padding: 15px;
+      background: transparent;
+      color: var(--navy);
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 600;
+      border: 2px solid var(--border);
+      border-radius: var(--r);
+      cursor: pointer;
+      transition: border-color .18s;
+    }
+
+    .btn-discover-sec:hover { border-color: var(--navy); }
+
+    /* ── Hidden ── */
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- Header -->
+  <header class="app-header">
+    <a href="../index.html" class="app-logo">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M8 3a4 4 0 014 4v10a4 4 0 01-8 0V7a4 4 0 014-4z" fill="#2347E5"/>
+        <path d="M16 3a4 4 0 00-4 4v0a4 4 0 004 4h0V3z" fill="#12203f"/>
+      </svg>
+      Mafinco
+    </a>
+    <button class="app-skip" id="skipBtn">Passer →</button>
+  </header>
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-meta">
+      <span class="progress-label">Personnalisation</span>
+      <span class="progress-count" id="progressCount">1 / 5</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ ÉTAPE 1 ═══════════════════ -->
+  <div class="question-card" id="step1">
+    <div class="question-kicker">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Comptes bancaires
+    </div>
+    <h2 class="question-text">Vous avez un compte bancaire commun ou chacun le vôtre&nbsp;?</h2>
+    <p class="question-sub">Ça nous aide à vous recommander les bons outils de gestion.</p>
+
+    <div class="answers" data-step="1">
+
+      <button class="answer-btn" data-value="commun">
+        <div class="answer-icon">🏦</div>
+        <div class="answer-body">
+          <div class="answer-title">Compte commun</div>
+          <div class="answer-desc">Toutes vos dépenses transitent par un compte partagé</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="separes">
+        <div class="answer-icon">👤</div>
+        <div class="answer-body">
+          <div class="answer-title">Comptes séparés</div>
+          <div class="answer-desc">Chacun gère ses dépenses, vous partagez les frais communs</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="mixte">
+        <div class="answer-icon">🔀</div>
+        <div class="answer-body">
+          <div class="answer-title">Un peu des deux</div>
+          <div class="answer-desc">Compte commun pour les charges + comptes personnels</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════ ÉTAPE 2 ═══════════════════ -->
+  <div class="question-card" id="step2" hidden>
+    <div class="question-kicker">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Logement
+    </div>
+    <h2 class="question-text">Vous êtes propriétaires ou locataires&nbsp;?</h2>
+    <p class="question-sub">Pour vous proposer les meilleures offres d'assurance et de crédit.</p>
+
+    <div class="answers" data-step="2">
+
+      <button class="answer-btn" data-value="proprietaires">
+        <div class="answer-icon">🏠</div>
+        <div class="answer-body">
+          <div class="answer-title">Propriétaires</div>
+          <div class="answer-desc">Vous avez acheté votre résidence principale ou secondaire</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="locataires">
+        <div class="answer-icon">🗝️</div>
+        <div class="answer-body">
+          <div class="answer-title">Locataires</div>
+          <div class="answer-desc">Vous payez un loyer et souhaitez peut-être acheter un jour</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="autre">
+        <div class="answer-icon">📦</div>
+        <div class="answer-body">
+          <div class="answer-title">Hébergés / Autre</div>
+          <div class="answer-desc">Chez la famille, en coloc, ou situation particulière</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════ ÉTAPE 3 ═══════════════════ -->
+  <div class="question-card" id="step3" hidden>
+    <div class="question-kicker">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Épargne
+    </div>
+    <h2 class="question-text">Vous avez déjà commencé à épargner ensemble&nbsp;?</h2>
+    <p class="question-sub">Pour adapter nos recommandations à votre niveau d'avancement.</p>
+
+    <div class="answers" data-step="3">
+
+      <button class="answer-btn" data-value="oui">
+        <div class="answer-icon">✅</div>
+        <div class="answer-body">
+          <div class="answer-title">Oui, on a un plan</div>
+          <div class="answer-desc">PEA, assurance-vie, livrets — vous épargnez régulièrement</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="debut">
+        <div class="answer-icon">🌱</div>
+        <div class="answer-body">
+          <div class="answer-title">On a commencé un peu</div>
+          <div class="answer-desc">Quelques économies de côté, mais pas de stratégie claire</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="non">
+        <div class="answer-icon">⏳</div>
+        <div class="answer-body">
+          <div class="answer-title">Pas encore</div>
+          <div class="answer-desc">On aimerait commencer, mais on ne sait pas par où</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════ ÉTAPE 4 ═══════════════════ -->
+  <div class="question-card" id="step4" hidden>
+    <div class="question-kicker">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Objectif
+    </div>
+    <h2 class="question-text">Quel est votre objectif financier principal en couple&nbsp;?</h2>
+    <p class="question-sub">On construit votre parcours autour de ce qui vous tient le plus à cœur.</p>
+
+    <div class="answers" data-step="4">
+
+      <button class="answer-btn" data-value="immo">
+        <div class="answer-icon">🏡</div>
+        <div class="answer-body">
+          <div class="answer-title">Achat immobilier</div>
+          <div class="answer-desc">Préparer votre apport et trouver le bon crédit</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="securite">
+        <div class="answer-icon">🛡️</div>
+        <div class="answer-body">
+          <div class="answer-title">Épargne de sécurité</div>
+          <div class="answer-desc">Construire un matelas d'urgence à deux</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="investissement">
+        <div class="answer-icon">📈</div>
+        <div class="answer-body">
+          <div class="answer-title">Investissement</div>
+          <div class="answer-desc">Faire fructifier votre argent sur le long terme</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="voyage">
+        <div class="answer-icon">✈️</div>
+        <div class="answer-body">
+          <div class="answer-title">Voyage / Projet commun</div>
+          <div class="answer-desc">Financer une aventure, un mariage, un grand projet</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════ ÉTAPE 5 ═══════════════════ -->
+  <div class="question-card" id="step5" hidden>
+    <div class="question-kicker">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Revenus
+    </div>
+    <h2 class="question-text">Vos revenus combinés se situent plutôt…</h2>
+    <p class="question-sub">Pour calibrer les recommandations à votre situation réelle.</p>
+
+    <div class="answers" data-step="5">
+
+      <button class="answer-btn" data-value="moins3k">
+        <div class="answer-icon">💶</div>
+        <div class="answer-body">
+          <div class="answer-title">Moins de 3 000 € / mois</div>
+          <div class="answer-desc">On optimise chaque euro pour vous</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="3k6k">
+        <div class="answer-icon">💰</div>
+        <div class="answer-body">
+          <div class="answer-title">3 000 – 6 000 € / mois</div>
+          <div class="answer-desc">Un beau potentiel d'épargne à structurer</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="6k10k">
+        <div class="answer-icon">🏆</div>
+        <div class="answer-body">
+          <div class="answer-title">6 000 – 10 000 € / mois</div>
+          <div class="answer-desc">Profil idéal pour des stratégies d'investissement avancées</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+      <button class="answer-btn" data-value="plus10k">
+        <div class="answer-icon">💎</div>
+        <div class="answer-body">
+          <div class="answer-title">Plus de 10 000 € / mois</div>
+          <div class="answer-desc">Gestion de patrimoine et solutions premium</div>
+        </div>
+        <div class="answer-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════ RÉSULTAT ═══════════════════ -->
+  <div class="result-screen" id="stepResult" hidden>
+    <div class="result-icon">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 class="result-title">Votre espace est prêt !</h2>
+    <p class="result-sub">On a personnalisé Mafinco pour vous deux. Voici ce qu'on va vous préparer :</p>
+    <div class="result-pills" id="resultPills"></div>
+    <button class="btn-discover" onclick="window.location.href='../index.html'">Découvrir mon tableau de bord →</button>
+    <button class="btn-discover-sec" onclick="window.location.href='../index.html'">Retour à l'accueil</button>
+  </div>
+
+  <!-- Bouton Suivant -->
+  <div class="next-wrap" id="nextWrap">
+    <button class="btn-next" id="nextBtn" disabled>
+      Continuer
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<script>
+  const STEPS = 5;
+  let current = 1;
+  const answers = {};
+
+  const PILLS_MAP = {
+    commun:          'Compte commun connecté',
+    separes:         'Partage de frais automatique',
+    mixte:           'Multi-comptes synchronisés',
+    proprietaires:   'Assurance habitation optimisée',
+    locataires:      'Offres crédit immo',
+    autre:           'Conseils logement',
+    oui:             'Stratégie d\'épargne avancée',
+    debut:           'Plan d\'épargne guidé',
+    non:             'Démarrage épargne pas à pas',
+    immo:            'Simulateur apport immobilier',
+    securite:        'Objectif matelas d\'urgence',
+    investissement:  'Portefeuille investissement',
+    voyage:          'Cagnotte projet commun',
+    moins3k:         'Optimisation budget serré',
+    '3k6k':          'Plan épargne intermédiaire',
+    '6k10k':         'Stratégie patrimoniale',
+    plus10k:         'Conseil gestion de patrimoine',
+  };
+
+  function show(stepId) {
+    for (let i = 1; i <= STEPS; i++) {
+      const el = document.getElementById('step' + i);
+      if (el) el.hidden = (i !== stepId);
+    }
+    document.getElementById('stepResult').hidden = true;
+    updateProgress(stepId);
+  }
+
+  function updateProgress(step) {
+    document.getElementById('progressCount').textContent = step + ' / ' + STEPS;
+    document.getElementById('progressFill').style.width = (step / STEPS * 100) + '%';
+  }
+
+  function updateNextBtn() {
+    document.getElementById('nextBtn').disabled = !answers[current];
+  }
+
+  // Sélection de réponse
+  document.querySelectorAll('.answers').forEach(group => {
+    group.querySelectorAll('.answer-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('.answer-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        answers[current] = btn.dataset.value;
+        updateNextBtn();
+      });
+    });
+  });
+
+  // Bouton suivant
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    if (current < STEPS) {
+      current++;
+      show(current);
+      updateNextBtn();
+    } else {
+      showResult();
+    }
+  });
+
+  // Passer
+  document.getElementById('skipBtn').addEventListener('click', () => {
+    window.location.href = 'dashboard.html';
+  });
+
+  function showResult() {
+    for (let i = 1; i <= STEPS; i++) {
+      const el = document.getElementById('step' + i);
+      if (el) el.hidden = true;
+    }
+    document.getElementById('stepResult').hidden = false;
+    document.getElementById('nextWrap').hidden = true;
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('progressCount').textContent = '✓ Terminé';
+
+    const pills = document.getElementById('resultPills');
+    pills.innerHTML = '';
+    Object.values(answers).forEach(val => {
+      if (PILLS_MAP[val]) {
+        const p = document.createElement('span');
+        p.className = 'result-pill';
+        p.textContent = PILLS_MAP[val];
+        pills.appendChild(p);
+      }
+    });
+  }
+
+  show(1);
+</script>
+
+</body>
+</html>

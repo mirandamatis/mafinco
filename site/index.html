@@ -106,8 +106,147 @@
         </div>
       </div>
 
-      <div class="hero__visual hero-image fade-up" aria-label="Aperçus de l'application Mafinco">
-        <img src="assets/icons/Téléphone home page.png" alt="Aperçus de l'application Mafinco sur mobile" class="hero-phones-img">
+      <div class="hero__visual fade-up" aria-label="Aperçus de l'application Mafinco" role="img">
+        <div class="hero-phones-scene">
+
+          <!-- Téléphone gauche : Conseiller IA -->
+          <div class="hp hp--left">
+            <div class="hp__shell">
+              <div class="hp__screen">
+                <div class="hp__notch"></div>
+                <div class="hp__content">
+                  <div class="hp__time">9:41</div>
+                  <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
+                    <div style="width:40px;height:40px;border-radius:50%;background:#2347E5;display:flex;align-items:center;justify-content:center;flex:none">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size:15px;font-weight:700;color:#12203f">Conseiller IA</div>
+                      <div style="font-size:11px;color:#2347E5">En ligne</div>
+                    </div>
+                  </div>
+                  <div style="background:#12203f;border-radius:18px;padding:18px;margin-bottom:16px">
+                    <div style="font-size:12px;color:#a9b3d0;line-height:1.5">Vous économisez <span style="color:#8fa2ff;font-weight:700">420 €</span> par mois. Pensez à placer cette somme sur un livret.</div>
+                  </div>
+                  <div style="background:#2347E5;border-radius:18px;padding:18px;margin-bottom:18px">
+                    <div style="font-size:12px;color:#c6d3ff;margin-bottom:6px">Projection 12 mois</div>
+                    <div style="font-size:26px;font-weight:800;color:#fff;margin-bottom:14px">5 187 €</div>
+                    <div style="display:flex;align-items:flex-end;gap:5px;height:34px">
+                      <div style="width:10px;height:40%;background:rgba(255,255,255,.45);border-radius:3px"></div>
+                      <div style="width:10px;height:55%;background:rgba(255,255,255,.55);border-radius:3px"></div>
+                      <div style="width:10px;height:35%;background:rgba(255,255,255,.45);border-radius:3px"></div>
+                      <div style="width:10px;height:70%;background:rgba(255,255,255,.7);border-radius:3px"></div>
+                      <div style="width:10px;height:90%;background:#fff;border-radius:3px"></div>
+                      <div style="width:10px;height:60%;background:rgba(255,255,255,.6);border-radius:3px"></div>
+                    </div>
+                  </div>
+                  <div style="background:#2347E5;color:#fff;font-size:13px;font-weight:700;border-radius:14px;padding:12px 0;text-align:center;width:130px">En savoir +</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Téléphone droit : Ajouter une dépense -->
+          <div class="hp hp--right">
+            <div class="hp__shell">
+              <div class="hp__screen">
+                <div class="hp__notch"></div>
+                <div class="hp__content">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+                    <div style="font-size:16px;font-weight:800;color:#12203f">Ajouter une dépense</div>
+                    <div style="width:32px;height:32px;border-radius:50%;background:#2347E5;display:flex;align-items:center;justify-content:center;flex:none">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="white" stroke-width="2.4" stroke-linecap="round"/></svg>
+                    </div>
+                  </div>
+                  <div style="background:#fff;border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 6px 18px rgba(18,32,63,0.08)">
+                    <div style="font-size:11px;color:#8b93ab;margin-bottom:6px">Montant</div>
+                    <div style="font-size:30px;font-weight:800;color:#12203f;margin-bottom:14px">42,50 €</div>
+                    <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px">
+                      <span style="color:#8b93ab">Catégorie</span><span style="color:#12203f;font-weight:600">Courses 🛒</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px">
+                      <span style="color:#8b93ab">Payé par</span><span style="color:#12203f;font-weight:600">Alex</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:12px">
+                      <span style="color:#8b93ab">Partage</span><span style="color:#2347E5;font-weight:700">50 / 50</span>
+                    </div>
+                  </div>
+                  <div style="background:#E8EDFB;border-radius:14px;padding:14px;margin-bottom:16px">
+                    <div style="font-size:11px;color:#2347E5;font-weight:700;margin-bottom:3px">Remboursement</div>
+                    <div style="font-size:12px;color:#12203f">Camille doit 21,25 € à Alex</div>
+                  </div>
+                  <div style="background:#12203f;color:#fff;font-size:13px;font-weight:700;border-radius:14px;padding:13px 0;text-align:center">Valider la dépense</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Téléphone central : Budget commun -->
+          <div class="hp hp--center">
+            <div class="hp__shell hp__shell--lg">
+              <div class="hp__screen hp__screen--lg">
+                <div class="hp__notch hp__notch--lg"></div>
+                <div class="hp__content">
+                  <div class="hp__time">9:41</div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px">
+                    <div>
+                      <div style="font-size:12px;color:#8b93ab;margin-bottom:4px">Bonjour Camille</div>
+                      <div style="font-size:20px;font-weight:800;color:#12203f">Votre budget commun</div>
+                    </div>
+                    <div style="width:38px;height:38px;border-radius:50%;background:#E8EDFB;display:flex;align-items:center;justify-content:center;flex:none">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0" stroke="#2347E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                  </div>
+                  <div style="background:#2347E5;border-radius:20px;padding:22px;margin-bottom:20px">
+                    <div style="font-size:12px;color:#c6d3ff;margin-bottom:8px">Total à deux ce mois</div>
+                    <div style="font-size:34px;font-weight:800;color:#fff;margin-bottom:8px">4 520,80 €</div>
+                    <div style="font-size:12px;color:#c6d3ff;display:flex;align-items:center;gap:4px">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="#c6d3ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      +12% vs mois dernier
+                    </div>
+                  </div>
+                  <div style="margin-bottom:22px">
+                    <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#12203f;margin-bottom:8px">
+                      <span>Camille</span><span>Alex</span>
+                    </div>
+                    <div style="width:100%;height:8px;background:#E8EDFB;border-radius:5px;overflow:hidden;display:flex">
+                      <div style="width:58%;height:100%;background:#12203f"></div>
+                      <div style="width:42%;height:100%;background:#2347E5"></div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:12px;color:#8b93ab;margin-top:6px">
+                      <span>2 618 €</span><span>1 902 €</span>
+                    </div>
+                  </div>
+                  <div style="font-size:11px;font-weight:700;color:#8b93ab;letter-spacing:.06em;margin-bottom:12px">RÉCENT</div>
+                  <div style="display:flex;flex-direction:column;gap:10px">
+                    <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 4px 12px rgba(18,32,63,0.06)">
+                      <div style="width:34px;height:34px;border-radius:10px;background:#E8EDFB;display:flex;align-items:center;justify-content:center;flex:none">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8M5 10v10h14V10" stroke="#2347E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </div>
+                      <div style="flex:1;font-size:13px;font-weight:600;color:#12203f">Loyer mars</div>
+                      <div style="font-size:13px;font-weight:700;color:#12203f">-1 200 €</div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 4px 12px rgba(18,32,63,0.06)">
+                      <div style="width:34px;height:34px;border-radius:10px;background:#E8EDFB;display:flex;align-items:center;justify-content:center;flex:none">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 3v18M6 3c0 4 4 4 4 8M18 3v18M18 3c-3 2-3 6 0 8" stroke="#2347E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </div>
+                      <div style="flex:1;font-size:13px;font-weight:600;color:#12203f">Restau samedi</div>
+                      <div style="font-size:13px;font-weight:700;color:#12203f">-68 €</div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 4px 12px rgba(18,32,63,0.06)">
+                      <div style="width:34px;height:34px;border-radius:10px;background:#E8EDFB;display:flex;align-items:center;justify-content:center;flex:none">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 6h16l-1.5 9h-13z" stroke="#2347E5" stroke-width="2" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="#2347E5"/><circle cx="16" cy="20" r="1.4" fill="#2347E5"/></svg>
+                      </div>
+                      <div style="flex:1;font-size:13px;font-weight:600;color:#12203f">Courses Carrefour</div>
+                      <div style="font-size:13px;font-weight:700;color:#12203f">-94 €</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </div>
