@@ -750,12 +750,19 @@
 }
 
 /* ── Hero 3 téléphones ── */
+/* Wrapper qui contrôle l'overflow sans écraser la scene */
+.hero-phones-clip {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+}
+
 .hero-phones-scene {
   position: relative;
   width: 760px;
   height: 720px;
   flex-shrink: 0;
-  /* Scale down to ~547px without squishing content */
   transform: scale(0.72);
   transform-origin: top left;
   margin-right: calc(-760px * 0.28);
@@ -1888,24 +1895,40 @@
   box-shadow: var(--shadow-xl);
 }
 
+@media (max-width: 600px) {
+  /* Cacher les téléphones sur petit mobile — texte prioritaire */
+  .hero-phones-clip { display: none; }
+
+  .home-hero h1 {
+    font-size: clamp(32px, 9vw, 48px);
+  }
+
+  .home-hero .hero__lead {
+    font-size: 16px;
+  }
+
+  .home-hero .btn-store {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .home-hero .store-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .feature-block { grid-template-columns: 1fr; gap: var(--sp-8); direction: ltr; }
   .feature-block__title { font-size: var(--text-3xl); }
   .feature-block__mockup { max-width: 280px; }
-
-  .hero-phones-scene {
-    transform: scale(0.42);
-    transform-origin: top center;
-    margin-right: 0;
-    margin-bottom: calc(-720px * 0.58);
-  }
 }
 
 @media (max-width: 1024px) {
   .hero-phones-scene {
     transform: scale(0.56);
-    transform-origin: top center;
-    margin-right: 0;
+    transform-origin: top left;
+    margin-right: calc(-760px * 0.44);
     margin-bottom: calc(-720px * 0.44);
   }
 
