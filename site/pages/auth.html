@@ -343,7 +343,7 @@
       <h1 class="form-title">Créer votre compte</h1>
       <p class="form-subtitle">Gratuit, sans carte bancaire.</p>
 
-      <div class="success-msg" id="success-inscription">Compte créé ! Vérifiez votre email.</div>
+      <div class="success-msg" id="success-inscription">Compte créé ! Personnalisation en cours…</div>
 
       <form id="form-inscription" novalidate>
         <div class="field-row">
@@ -429,6 +429,7 @@
 
       if (!email.classList.contains('error') && !pwd.classList.contains('error')) {
         document.getElementById('success-connexion').classList.add('show');
+        setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
       }
     });
 
@@ -447,7 +448,10 @@
       pwd.classList.toggle('error',    pwd.value.length < 8);
 
       const allOk = ![prenom, nom, email, pwd].some(i => i.classList.contains('error')) && cgv.checked;
-      if (allOk) document.getElementById('success-inscription').classList.add('show');
+      if (allOk) {
+        document.getElementById('success-inscription').classList.add('show');
+        setTimeout(() => { window.location.href = 'onboarding.html'; }, 1200);
+      }
     });
 
     // Effacer erreur au focus
