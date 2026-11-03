@@ -38,9 +38,28 @@
     html, body {
       height: 100%;
       font-family: var(--font-body);
-      background: var(--off);
+      background:
+        radial-gradient(circle at 18% -12%, rgba(35,71,229,.12), transparent 32%),
+        radial-gradient(circle at 92% 8%, rgba(34,197,94,.10), transparent 28%),
+        var(--off);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    button,
+    select,
+    [role="button"],
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [role="button"]:focus-visible {
+      outline: 3px solid rgba(35,71,229,.22);
+      outline-offset: 3px;
     }
 
     /* ══════════════════════════════
@@ -91,11 +110,11 @@
       font-weight: 500;
       cursor: pointer;
       text-decoration: none;
-      transition: background .15s, color .15s;
+      transition: background .15s, color .15s, transform .15s;
     }
 
     .nav-item svg { width: 18px; height: 18px; flex-shrink: 0; }
-    .nav-item:hover { background: rgba(255,255,255,.07); color: rgba(255,255,255,.85); }
+    .nav-item:hover { background: rgba(255,255,255,.07); color: rgba(255,255,255,.85); transform: translateX(3px); }
     .nav-item.active { background: var(--blue); color: var(--white); }
 
     .sidebar__bottom { display: flex; flex-direction: column; gap: 4px; }
@@ -174,9 +193,9 @@
       cursor: pointer;
       color: var(--muted);
       position: relative;
-      transition: border-color .15s, color .15s;
+      transition: border-color .15s, color .15s, transform .15s, box-shadow .15s;
     }
-    .topbar-icon:hover { border-color: var(--blue); color: var(--blue); }
+    .topbar-icon:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); box-shadow: 0 10px 22px rgba(35,71,229,.12); }
     .topbar-icon svg { width: 18px; height: 18px; }
 
     .notif-dot {
@@ -199,7 +218,10 @@
       padding: 8px 12px;
       cursor: pointer;
       outline: none;
+      transition: border-color .15s, box-shadow .15s, background .15s;
     }
+    .period-select:hover,
+    .period-select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(35,71,229,.10); }
 
     /* ── Content ── */
     .content {
@@ -221,10 +243,35 @@
       padding: 24px;
       box-shadow: 0 2px 12px rgba(18,32,63,.05);
       border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .card.is-actionable {
+      cursor: pointer;
+    }
+
+    .card.is-actionable:hover {
+      transform: translateY(-3px);
+      border-color: rgba(35,71,229,.28);
+      box-shadow: 0 20px 44px rgba(18,32,63,.10);
+    }
+
+    .card.is-actionable:active,
+    .expense-item:active,
+    .category-item:active,
+    .action-tile:active,
+    .topbar-icon:active,
+    .btn-add:active,
+    .alert:active {
+      transform: translateY(0) scale(.99);
     }
 
     .card--blue {
-      background: var(--blue);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,0) 42%),
+        var(--blue);
       border-color: var(--blue);
       color: var(--white);
     }
@@ -293,11 +340,88 @@
     }
 
     .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
       font-size: 12px;
       font-weight: 600;
       color: var(--blue);
       cursor: pointer;
       text-decoration: none;
+      transition: color .15s, transform .15s;
+    }
+    .card-action:hover { color: var(--blue-hover); transform: translateX(2px); }
+
+    .stat-hint {
+      display: block;
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .card--blue .stat-hint { color: rgba(255,255,255,.7); }
+
+    /* ── Actions rapides ── */
+    .action-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .action-tile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 72px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 26px rgba(18,32,63,.06);
+      color: var(--navy);
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+      text-align: left;
+    }
+
+    .action-tile:hover {
+      transform: translateY(-2px);
+      border-color: rgba(35,71,229,.28);
+      background: var(--white);
+      box-shadow: 0 18px 36px rgba(18,32,63,.10);
+    }
+
+    .action-tile__icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue-light);
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+
+    .action-tile__icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .action-tile__label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .action-tile__meta {
+      display: block;
+      margin-top: 2px;
+      font-size: 12px;
+      color: var(--muted);
     }
 
     .repartition-users {
@@ -338,11 +462,12 @@
       gap: 14px;
       padding: 13px 14px;
       border-radius: 12px;
-      transition: background .12s;
+      border: 1px solid transparent;
+      transition: background .12s, transform .12s, border-color .12s;
       cursor: pointer;
     }
 
-    .expense-item:hover { background: var(--off); }
+    .expense-item:hover { background: var(--off); border-color: var(--border); transform: translateX(3px); }
 
     .expense-icon {
       width: 38px; height: 38px;
@@ -385,15 +510,16 @@
       margin: 20px 0 8px;
     }
 
-    .bar-col { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+    .bar-col { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; cursor: pointer; border-radius: 10px; transition: transform .15s, background .15s; }
+    .bar-col:hover { transform: translateY(-2px); background: var(--blue-lighter); }
 
     .bar {
       width: 100%;
       border-radius: 6px 6px 0 0;
-      transition: opacity .15s;
+      transition: opacity .15s, box-shadow .15s;
       cursor: pointer;
     }
-    .bar:hover { opacity: .8; }
+    .bar-col:hover .bar { opacity: .86; box-shadow: 0 8px 18px rgba(35,71,229,.18); }
     .bar--blue { background: var(--blue); }
     .bar--light { background: var(--blue-light); }
 
@@ -402,7 +528,17 @@
     /* ── Catégories ── */
     .category-list { display: flex; flex-direction: column; gap: 14px; }
 
-    .category-item { display: flex; flex-direction: column; gap: 6px; }
+    .category-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      margin: 0 -10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background .15s, transform .15s;
+    }
+    .category-item:hover { background: var(--blue-lighter); transform: translateX(3px); }
 
     .category-header {
       display: flex;
@@ -446,7 +582,10 @@
       padding: 24px;
       color: var(--white);
       border: 1px solid var(--navy);
+      box-shadow: 0 20px 44px rgba(18,32,63,.16);
+      transition: transform .18s, box-shadow .18s;
     }
+    .ia-card:hover { transform: translateY(-2px); box-shadow: 0 26px 54px rgba(18,32,63,.22); }
 
     .ia-header {
       display: flex;
@@ -492,9 +631,9 @@
       color: rgba(255,255,255,.8);
       cursor: pointer;
       border: none;
-      transition: background .15s;
+      transition: background .15s, transform .15s;
     }
-    .ia-chip:hover { background: rgba(255,255,255,.18); }
+    .ia-chip:hover { background: rgba(255,255,255,.18); transform: translateY(-1px); }
 
     .ia-input {
       display: flex;
@@ -523,9 +662,9 @@
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      transition: background .15s;
+      transition: background .15s, transform .15s, box-shadow .15s;
     }
-    .ia-send:hover { background: var(--blue-hover); }
+    .ia-send:hover { background: var(--blue-hover); transform: translateY(-1px); box-shadow: 0 10px 20px rgba(35,71,229,.24); }
     .ia-send svg { width: 16px; height: 16px; }
 
     /* ── Objectif ── */
@@ -601,9 +740,9 @@
       border: none;
       border-radius: 12px;
       cursor: pointer;
-      transition: background .15s;
+      transition: background .15s, transform .15s, box-shadow .15s;
     }
-    .btn-add:hover { background: var(--blue-hover); }
+    .btn-add:hover { background: var(--blue-hover); transform: translateY(-1px); box-shadow: 0 14px 26px rgba(35,71,229,.22); }
     .btn-add svg { width: 16px; height: 16px; }
 
     /* ── Alerte ── */
@@ -615,12 +754,27 @@
       border-radius: 12px;
       background: var(--orange-light);
       border: 1px solid #fde68a;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
     }
+    .alert:hover { transform: translateY(-1px); border-color: #fbbf24; box-shadow: 0 12px 26px rgba(245,158,11,.14); }
 
     .alert svg { width: 18px; height: 18px; color: var(--orange); flex-shrink: 0; margin-top: 1px; }
 
     .alert-text { font-size: 13px; color: #92400e; line-height: 1.5; }
     .alert-text strong { font-weight: 700; display: block; margin-bottom: 2px; }
+
+    .alert-button {
+      margin-left: auto;
+      flex-shrink: 0;
+      align-self: center;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(146,64,14,.10);
+      color: #92400e;
+      font-size: 12px;
+      font-weight: 800;
+    }
 
     /* ── Burger button (mobile only) ── */
     .burger {
@@ -646,6 +800,239 @@
     }
     .sidebar-overlay.show { display: block; }
 
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: min(420px, calc(100vw - 32px));
+      padding: 13px 16px;
+      border-radius: 14px;
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: 0 18px 42px rgba(18,32,63,.26);
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 16px);
+      transition: opacity .2s, transform .2s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .toast svg {
+      width: 18px;
+      height: 18px;
+      color: #4ade80;
+      flex-shrink: 0;
+    }
+
+    /* ── Modales ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 180;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(18,32,63,.48);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal {
+      width: min(480px, 100%);
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: 0 28px 70px rgba(18,32,63,.24);
+      padding: 24px;
+      transform: translateY(10px) scale(.98);
+      animation: modalIn .18s ease forwards;
+    }
+
+    @keyframes modalIn {
+      to { transform: none; }
+    }
+
+    .modal__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .modal__title {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+
+    .modal__subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .modal__close {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--off);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: color .15s, border-color .15s, transform .15s;
+      flex-shrink: 0;
+    }
+
+    .modal__close:hover {
+      color: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .modal__close svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field label {
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      height: 46px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--navy);
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 0 13px;
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(35,71,229,.10);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .modal__actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .btn-secondary,
+    .btn-primary {
+      min-height: 44px;
+      border-radius: 12px;
+      padding: 0 16px;
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s, transform .15s, box-shadow .15s;
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      border: 1px solid var(--blue);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-hover);
+      border-color: var(--blue-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(35,71,229,.20);
+    }
+
+    .ia-thread {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .ia-bubble {
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .ia-bubble--assistant {
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.82);
+    }
+
+    .ia-bubble--user {
+      align-self: flex-end;
+      max-width: 92%;
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .ia-bubble strong { color: var(--white); }
+
     /* ══════════════════════════════
        RESPONSIVE
     ══════════════════════════════ */
@@ -656,6 +1043,7 @@
     @media (max-width: 900px) {
       :root { --sidebar: 200px; }
       .grid-3 { grid-template-columns: 1fr 1fr; }
+      .action-strip { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 700px) {
@@ -677,6 +1065,13 @@
       .topbar__left p { display: none; }
       .burger { display: flex; }
       .period-select { display: none; }
+      .action-strip { grid-template-columns: 1fr; }
+      .alert { align-items: flex-start; }
+      .alert-button { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .modal { padding: 20px; }
+      .modal__actions { flex-direction: column-reverse; }
+      .btn-secondary, .btn-primary { width: 100%; }
     }
   </style>
 </head>
@@ -695,42 +1090,42 @@
     </a>
 
     <nav class="sidebar__nav">
-      <a class="nav-item active" href="#">
+      <a class="nav-item active" href="#dashboard" data-nav="dashboard">
         <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
         Tableau de bord
       </a>
-      <a class="nav-item" href="#">
+      <a class="nav-item" href="#depenses" data-nav="depenses">
         <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16l-1.5 9h-13zM9 20a1 1 0 100-2 1 1 0 000 2zm7 0a1 1 0 100-2 1 1 0 000 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         Dépenses
       </a>
-      <a class="nav-item" href="#">
+      <a class="nav-item" href="#budget" data-nav="budget">
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Budget
       </a>
-      <a class="nav-item" href="#">
+      <a class="nav-item" href="#epargne" data-nav="epargne">
         <svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Épargne
       </a>
-      <a class="nav-item" href="#">
+      <a class="nav-item" href="#partenaires" data-nav="partenaires" data-toast="Le module partenaires arrive dans la prochaine version du prototype.">
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
         Partenaires
       </a>
-      <a class="nav-item" href="#">
+      <a class="nav-item" href="#profil" data-nav="profil" data-toast="Profil couple ouvert : partage 58% / 42% ce mois-ci.">
         <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         Profil couple
       </a>
     </nav>
 
     <div class="sidebar__bottom">
-      <a class="nav-item" href="#">
+      <a class="nav-item" href="#assistant" data-nav="assistant">
         <svg viewBox="0 0 24 24" fill="none"><path d="M10.3 5a7 7 0 100 14 7 7 0 000-14zM21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         Conseiller IA
       </a>
-      <a class="nav-item" href="#">
+      <a class="nav-item" href="#parametres" data-nav="parametres" data-toast="Paramètres du compte : notifications, couple et sécurité.">
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="2"/></svg>
         Paramètres
       </a>
-      <div class="sidebar__avatar">
+      <div class="sidebar__avatar" role="button" tabindex="0" data-toast="Espace Camille & Alex : plan gratuit, 14 jours restants.">
         <div class="avatar-pic">C</div>
         <div class="avatar-info">
           <div class="avatar-name">Camille & Alex</div>
@@ -758,60 +1153,104 @@
         </div>
       </div>
       <div class="topbar__right">
-        <select class="period-select">
+        <select class="period-select" aria-label="Période du tableau de bord">
           <option>Septembre 2026</option>
           <option>Août 2026</option>
           <option>Juillet 2026</option>
         </select>
-        <div class="topbar-icon">
+        <div class="topbar-icon" role="button" tabindex="0" data-toast="3 notifications : budget courses, objectif épargne et rappel de remboursement.">
           <svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="notif-dot"></div>
         </div>
-        <div class="topbar-icon">
+        <div class="topbar-icon" role="button" tabindex="0" data-toast="Profil Camille & Alex ouvert.">
           <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
       </div>
     </div>
 
     <!-- Content -->
-    <div class="content">
+    <div class="content" id="dashboard">
 
       <!-- ── Stat cards ── -->
       <div class="grid-3">
 
-        <div class="card card--blue">
+        <div class="card card--blue is-actionable" role="button" tabindex="0" data-toast="Budget commun : 4 520,80 € dépensés en septembre.">
           <div class="stat-label">Budget commun ce mois</div>
-          <div class="stat-value">4 520,80 €</div>
+          <div class="stat-value" id="budgetValue">4 520,80 €</div>
           <span class="stat-badge stat-badge--up">
             <svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             +12% vs août
           </span>
+          <span class="stat-hint">Ouvrir l'analyse du mois</span>
         </div>
 
-        <div class="card">
+        <div class="card is-actionable" role="button" tabindex="0" data-toast="Remboursement suggéré : Alex rembourse 21,25 € à Camille.">
           <div class="stat-label">Solde à rembourser</div>
           <div class="stat-value" style="color:#2347E5">21,25 €</div>
           <span class="stat-badge stat-badge--neutral">Alex → Camille</span>
+          <span class="stat-hint">Préparer le virement</span>
         </div>
 
-        <div class="card">
+        <div class="card is-actionable" role="button" tabindex="0" data-scroll-target="epargne" data-toast="Épargne commune : objectif immobilier atteint à 20,8%.">
           <div class="stat-label">Épargne commune</div>
-          <div class="stat-value">8 340 €</div>
+          <div class="stat-value" id="savingsValue">8 340 €</div>
           <span class="stat-badge stat-badge--up">
             <svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             +420 € ce mois
           </span>
+          <span class="stat-hint">Voir l'objectif</span>
         </div>
 
       </div>
 
       <!-- ── Alerte ── -->
-      <div class="alert">
+      <div class="alert" role="button" tabindex="0" data-scroll-target="budget" data-toast="Budget courses prêt à être ajusté : dépassement de 14 €.">
         <svg viewBox="0 0 24 24" fill="none"><path d="M10.3 3.3L2 20h20L13.7 3.3a2 2 0 00-3.4 0z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><line x1="12" y1="10" x2="12" y2="14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
         <div class="alert-text">
           <strong>Budget courses dépassé</strong>
           Vous avez dépensé 94 € sur un budget de 80 €. Voulez-vous ajuster votre budget ?
         </div>
+        <span class="alert-button">Ajuster</span>
+      </div>
+
+      <!-- ── Actions rapides ── -->
+      <div class="action-strip" aria-label="Actions rapides">
+        <button class="action-tile" type="button" data-open-expense>
+          <span class="action-tile__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </span>
+          <span>
+            <span class="action-tile__label">Ajouter</span>
+            <span class="action-tile__meta">Une dépense</span>
+          </span>
+        </button>
+        <button class="action-tile" type="button" data-toast="Virement de 21,25 € préparé pour équilibrer le couple.">
+          <span class="action-tile__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 11l5-5 5 5M12 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 18h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span>
+            <span class="action-tile__label">Rembourser</span>
+            <span class="action-tile__meta">Alex → Camille</span>
+          </span>
+        </button>
+        <button class="action-tile" type="button" data-scroll-target="budget" data-toast="Simulation budget lancée : les catégories sont prêtes à ajuster.">
+          <span class="action-tile__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 16V9M12 16V7M16 16v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span>
+            <span class="action-tile__label">Simuler</span>
+            <span class="action-tile__meta">Le budget</span>
+          </span>
+        </button>
+        <button class="action-tile" type="button" data-scroll-target="assistant" data-toast="Conseiller IA sélectionné : posez votre question en bas à droite.">
+          <span class="action-tile__icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span>
+            <span class="action-tile__label">Demander</span>
+            <span class="action-tile__meta">Au conseiller IA</span>
+          </span>
+        </button>
       </div>
 
       <!-- ── Ligne principale ── -->
@@ -821,10 +1260,10 @@
         <div style="display:flex;flex-direction:column;gap:20px;">
 
           <!-- Répartition -->
-          <div class="card">
+          <div class="card is-actionable" id="budget" role="button" tabindex="0" data-toast="Détail de répartition : Camille 58%, Alex 42%.">
             <div class="repartition-header">
               <div class="card-title">Répartition des dépenses</div>
-              <a class="card-action" href="#">Voir le détail →</a>
+              <a class="card-action" href="#budget" data-toast="Vue détaillée de répartition ouverte.">Voir le détail →</a>
             </div>
             <div class="repartition-users">
               <span>Camille</span>
@@ -843,25 +1282,25 @@
             <div style="margin-top:24px;">
               <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;">Évolution 6 mois</div>
               <div class="chart-bars">
-                <div class="bar-col"><div class="bar bar--light" style="height:55%"></div><div class="bar-label">Avr</div></div>
-                <div class="bar-col"><div class="bar bar--light" style="height:70%"></div><div class="bar-label">Mai</div></div>
-                <div class="bar-col"><div class="bar bar--light" style="height:45%"></div><div class="bar-label">Juin</div></div>
-                <div class="bar-col"><div class="bar bar--light" style="height:80%"></div><div class="bar-label">Juil</div></div>
-                <div class="bar-col"><div class="bar bar--light" style="height:65%"></div><div class="bar-label">Août</div></div>
-                <div class="bar-col"><div class="bar bar--blue" style="height:90%"></div><div class="bar-label" style="color:var(--blue);font-weight:700">Sep</div></div>
+                <div class="bar-col" role="button" tabindex="0" data-toast="Avril : dépenses stables, 55% du pic actuel."><div class="bar bar--light" style="height:55%"></div><div class="bar-label">Avr</div></div>
+                <div class="bar-col" role="button" tabindex="0" data-toast="Mai : hausse à surveiller, 70% du pic actuel."><div class="bar bar--light" style="height:70%"></div><div class="bar-label">Mai</div></div>
+                <div class="bar-col" role="button" tabindex="0" data-toast="Juin : meilleur mois des six derniers mois."><div class="bar bar--light" style="height:45%"></div><div class="bar-label">Juin</div></div>
+                <div class="bar-col" role="button" tabindex="0" data-toast="Juillet : dépenses vacances plus élevées."><div class="bar bar--light" style="height:80%"></div><div class="bar-label">Juil</div></div>
+                <div class="bar-col" role="button" tabindex="0" data-toast="Août : retour à un niveau plus confortable."><div class="bar bar--light" style="height:65%"></div><div class="bar-label">Août</div></div>
+                <div class="bar-col" role="button" tabindex="0" data-toast="Septembre : mois le plus élevé, 4 520,80 €."><div class="bar bar--blue" style="height:90%"></div><div class="bar-label" style="color:var(--blue);font-weight:700">Sep</div></div>
               </div>
             </div>
           </div>
 
           <!-- Dépenses récentes -->
-          <div class="card">
+          <div class="card" id="depenses">
             <div class="repartition-header">
               <div class="card-title">Dépenses récentes</div>
-              <a class="card-action" href="#">Tout voir →</a>
+              <a class="card-action" href="#depenses" data-toast="Liste complète des dépenses sélectionnée.">Tout voir →</a>
             </div>
-            <div class="expense-list">
+            <div class="expense-list" id="expenseList">
 
-              <div class="expense-item">
+              <div class="expense-item" role="button" tabindex="0" data-toast="Loyer septembre : 1 200 €, payé par Camille.">
                 <div class="expense-icon" style="background:#dbeafe">🏠</div>
                 <div class="expense-body">
                   <div class="expense-name">Loyer septembre</div>
@@ -870,7 +1309,7 @@
                 <div class="expense-amount">-1 200 €</div>
               </div>
 
-              <div class="expense-item">
+              <div class="expense-item" role="button" tabindex="0" data-toast="Restau samedi soir : 68 €, payé par Alex.">
                 <div class="expense-icon" style="background:#dcfce7">🍽️</div>
                 <div class="expense-body">
                   <div class="expense-name">Restau samedi soir</div>
@@ -879,7 +1318,7 @@
                 <div class="expense-amount">-68 €</div>
               </div>
 
-              <div class="expense-item">
+              <div class="expense-item" role="button" tabindex="0" data-toast="Courses Carrefour : budget dépassé de 14 €.">
                 <div class="expense-icon" style="background:#fef3c7">🛒</div>
                 <div class="expense-body">
                   <div class="expense-name">Courses Carrefour</div>
@@ -888,7 +1327,7 @@
                 <div class="expense-amount">-94 €</div>
               </div>
 
-              <div class="expense-item">
+              <div class="expense-item" role="button" tabindex="0" data-toast="Électricité EDF : 87 €, charge récurrente.">
                 <div class="expense-icon" style="background:#fce7f3">⚡</div>
                 <div class="expense-body">
                   <div class="expense-name">Électricité EDF</div>
@@ -897,7 +1336,7 @@
                 <div class="expense-amount">-87 €</div>
               </div>
 
-              <div class="expense-item">
+              <div class="expense-item" role="button" tabindex="0" data-toast="Remboursement Alex : solde réglé de 21,25 €.">
                 <div class="expense-icon" style="background:#dcfce7">💳</div>
                 <div class="expense-body">
                   <div class="expense-name">Remboursement Alex</div>
@@ -908,7 +1347,7 @@
 
             </div>
 
-            <button class="btn-add" style="margin-top:16px;">
+            <button class="btn-add" type="button" style="margin-top:16px;" data-open-expense>
               <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
               Ajouter une dépense
             </button>
@@ -920,61 +1359,61 @@
         <div style="display:flex;flex-direction:column;gap:20px;">
 
           <!-- Objectif -->
-          <div class="card">
+          <div class="card is-actionable" id="epargne" role="button" tabindex="0" data-open-goal>
             <div class="repartition-header">
               <div class="card-title">🏡 Objectif — Achat immo</div>
-              <a class="card-action" href="#">Modifier</a>
+              <button class="card-action" type="button" data-open-goal>Modifier</button>
             </div>
             <div class="objectif-header">
               <div class="objectif-icon">🎯</div>
               <div>
-                <div class="objectif-title">Apport appartement</div>
-                <div class="objectif-sub">Objectif : 40 000 € d'ici juin 2027</div>
+                <div class="objectif-title" id="goalTitle">Apport appartement</div>
+                <div class="objectif-sub" id="goalSubtitle">Objectif : 40 000 € d'ici juin 2027</div>
               </div>
             </div>
             <div class="objectif-progress">
-              <div class="objectif-pct">20,8%</div>
+              <div class="objectif-pct" id="goalPercent">20,8%</div>
               <div class="objectif-amounts">
-                <div style="font-weight:700;color:var(--navy)">8 340 €</div>
-                <div>sur 40 000 €</div>
+                <div style="font-weight:700;color:var(--navy)" id="goalSavedAmount">8 340 €</div>
+                <div id="goalTargetAmount">sur 40 000 €</div>
               </div>
             </div>
             <div class="objectif-track">
-              <div class="objectif-fill" style="width:20.8%"></div>
+              <div class="objectif-fill" id="goalFill" style="width:20.8%"></div>
             </div>
-            <div style="font-size:12px;color:var(--muted);margin-top:10px;">
+            <div id="goalEta" style="font-size:12px;color:var(--muted);margin-top:10px;">
               À ce rythme, vous atteindrez l'objectif en <strong style="color:var(--navy)">juillet 2027</strong>.
             </div>
           </div>
 
           <!-- Catégories -->
-          <div class="card">
+          <div class="card" id="profil">
             <div class="repartition-header">
               <div class="card-title">Répartition par catégorie</div>
             </div>
             <div class="category-list">
-              <div class="category-item">
+              <div class="category-item" role="button" tabindex="0" data-toast="Logement : 1 200 €, plus grosse catégorie du mois.">
                 <div class="category-header">
                   <div class="category-name"><div class="category-dot" style="background:#2347E5"></div>Logement</div>
                   <div class="category-amount">1 200 €</div>
                 </div>
                 <div class="category-track"><div class="category-fill" style="width:53%;background:#2347E5"></div></div>
               </div>
-              <div class="category-item">
+              <div class="category-item" role="button" tabindex="0" data-toast="Alimentation : 94 €, budget dépassé ce mois-ci.">
                 <div class="category-header">
                   <div class="category-name"><div class="category-dot" style="background:#12203f"></div>Alimentation</div>
                   <div class="category-amount">94 €</div>
                 </div>
                 <div class="category-track"><div class="category-fill" style="width:20%;background:#12203f"></div></div>
               </div>
-              <div class="category-item">
+              <div class="category-item" role="button" tabindex="0" data-toast="Charges : 87 €, poste maîtrisé.">
                 <div class="category-header">
                   <div class="category-name"><div class="category-dot" style="background:#6B8FFF"></div>Charges</div>
                   <div class="category-amount">87 €</div>
                 </div>
                 <div class="category-track"><div class="category-fill" style="width:17%;background:#6B8FFF"></div></div>
               </div>
-              <div class="category-item">
+              <div class="category-item" role="button" tabindex="0" data-toast="Sorties : 68 €, faible impact ce mois-ci.">
                 <div class="category-header">
                   <div class="category-name"><div class="category-dot" style="background:#a5b4fc"></div>Sorties</div>
                   <div class="category-amount">68 €</div>
@@ -985,7 +1424,7 @@
           </div>
 
           <!-- Conseiller IA -->
-          <div class="ia-card">
+          <div class="ia-card" id="assistant">
             <div class="ia-header">
               <div class="ia-avatar">
                 <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
@@ -996,19 +1435,21 @@
               </div>
             </div>
 
-            <div class="ia-message">
-              Vous économisez <strong>420 €</strong> par mois. À ce rythme, je vous conseille de placer cette somme sur un <strong>livret A</strong> ou un <strong>PEA</strong> pour optimiser votre épargne commune.
+            <div class="ia-thread" id="iaThread">
+              <div class="ia-bubble ia-bubble--assistant">
+                Vous économisez <strong>420 €</strong> par mois. À ce rythme, je vous conseille de placer cette somme sur un <strong>livret A</strong> ou un <strong>PEA</strong> pour optimiser votre épargne commune.
+              </div>
             </div>
 
             <div class="ia-chips">
-              <button class="ia-chip">Ouvrir un PEA</button>
-              <button class="ia-chip">Comparer les livrets</button>
-              <button class="ia-chip">Simuler mon crédit</button>
+              <button class="ia-chip" type="button" data-question="Peux-tu comparer PEA et livret A pour notre épargne commune ?">Ouvrir un PEA</button>
+              <button class="ia-chip" type="button" data-question="Quels livrets sont les plus adaptés à notre objectif achat immobilier ?">Comparer les livrets</button>
+              <button class="ia-chip" type="button" data-question="Simule un crédit immobilier avec notre apport actuel.">Simuler mon crédit</button>
             </div>
 
             <div class="ia-input">
-              <input type="text" placeholder="Posez votre question…">
-              <button class="ia-send">
+              <input type="text" placeholder="Posez votre question…" aria-label="Question au conseiller IA">
+              <button class="ia-send" type="button" aria-label="Envoyer la question" data-toast="Question envoyée au conseiller IA.">
                 <svg viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
             </div>
@@ -1022,10 +1463,159 @@
 
 </div>
 
+<div class="toast" id="dashboardToast" role="status" aria-live="polite">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span id="dashboardToastText">Action sélectionnée</span>
+</div>
+
+<div class="modal-overlay" id="expenseModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="expenseModalTitle">
+    <div class="modal__header">
+      <div>
+        <div class="modal__title" id="expenseModalTitle">Ajouter une dépense</div>
+        <div class="modal__subtitle">La dépense apparaît immédiatement dans la liste et met à jour le budget du mois.</div>
+      </div>
+      <button class="modal__close" type="button" data-close-modal aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <form class="form-grid" id="expenseForm">
+      <div class="field">
+        <label for="expenseName">Nom</label>
+        <input id="expenseName" name="name" type="text" placeholder="Ex. Pharmacie, courses, billet de train" required>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="expenseAmount">Montant</label>
+          <input id="expenseAmount" name="amount" type="number" min="0.01" step="0.01" placeholder="42.50" required>
+        </div>
+        <div class="field">
+          <label for="expenseDate">Date</label>
+          <input id="expenseDate" name="date" type="date" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="expensePayer">Payé par</label>
+          <select id="expensePayer" name="payer">
+            <option>Camille</option>
+            <option>Alex</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="expenseCategory">Catégorie</label>
+          <select id="expenseCategory" name="category">
+            <option>Alimentation</option>
+            <option>Logement</option>
+            <option>Charges</option>
+            <option>Sorties</option>
+            <option>Transport</option>
+            <option>Santé</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal__actions">
+        <button class="btn-secondary" type="button" data-close-modal>Annuler</button>
+        <button class="btn-primary" type="submit">Ajouter la dépense</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="goalModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="goalModalTitle">
+    <div class="modal__header">
+      <div>
+        <div class="modal__title" id="goalModalTitle">Modifier l'objectif</div>
+        <div class="modal__subtitle">Ajustez le nom, le montant cible ou l’épargne actuelle. Le suivi se recalcule tout seul.</div>
+      </div>
+      <button class="modal__close" type="button" data-close-modal aria-label="Fermer">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <form class="form-grid" id="goalForm">
+      <div class="field">
+        <label for="goalNameInput">Nom de l'objectif</label>
+        <input id="goalNameInput" name="name" type="text" value="Apport appartement" required>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="goalSavedInput">Déjà épargné</label>
+          <input id="goalSavedInput" name="saved" type="number" min="0" step="50" value="8340" required>
+        </div>
+        <div class="field">
+          <label for="goalTargetInput">Objectif total</label>
+          <input id="goalTargetInput" name="target" type="number" min="0" step="100" value="40000" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="goalDateInput">Échéance</label>
+        <input id="goalDateInput" name="date" type="month" value="2027-06" required>
+      </div>
+      <div class="modal__actions">
+        <button class="btn-secondary" type="button" data-close-modal>Annuler</button>
+        <button class="btn-primary" type="submit">Mettre à jour</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
   const burger = document.getElementById('burgerBtn');
   const sidebar = document.querySelector('.sidebar');
   const overlay = document.getElementById('sidebarOverlay');
+  const toast = document.getElementById('dashboardToast');
+  const toastText = document.getElementById('dashboardToastText');
+  const periodSelect = document.querySelector('.period-select');
+  const iaInput = document.querySelector('.ia-input input');
+  const expenseModal = document.getElementById('expenseModal');
+  const goalModal = document.getElementById('goalModal');
+  const expenseForm = document.getElementById('expenseForm');
+  const goalForm = document.getElementById('goalForm');
+  const expenseList = document.getElementById('expenseList');
+  const budgetValue = document.getElementById('budgetValue');
+  const savingsValue = document.getElementById('savingsValue');
+  const iaThread = document.getElementById('iaThread');
+  const goalTitle = document.getElementById('goalTitle');
+  const goalSubtitle = document.getElementById('goalSubtitle');
+  const goalPercent = document.getElementById('goalPercent');
+  const goalSavedAmount = document.getElementById('goalSavedAmount');
+  const goalTargetAmount = document.getElementById('goalTargetAmount');
+  const goalFill = document.getElementById('goalFill');
+  const goalEta = document.getElementById('goalEta');
+  const expenseDate = document.getElementById('expenseDate');
+  let toastTimer;
+  let totalBudget = 4520.80;
+  let savingsTotal = 8340;
+  let goalTarget = 40000;
+  let goalDeadline = '2027-06';
+
+  const categoryUi = {
+    Logement: { icon: '🏠', bg: '#dbeafe' },
+    Alimentation: { icon: '🛒', bg: '#fef3c7' },
+    Charges: { icon: '⚡', bg: '#fce7f3' },
+    Sorties: { icon: '🍽️', bg: '#dcfce7' },
+    Transport: { icon: '🚆', bg: '#e0f2fe' },
+    Santé: { icon: '💊', bg: '#fee2e2' }
+  };
+
+  const formatEuros = (amount, decimals = 0) =>
+    amount.toLocaleString('fr-FR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + ' €';
+
+  const formatDateShort = value => {
+    const date = value ? new Date(`${value}T12:00:00`) : new Date();
+    return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }).replace('.', '');
+  };
+
+  const monthLabel = value => {
+    const [year, month] = value.split('-').map(Number);
+    const date = new Date(year, month - 1, 1);
+    return date.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+  };
+
+  if (expenseDate) expenseDate.valueAsDate = new Date();
 
   function openSidebar() {
     sidebar.classList.add('open');
@@ -1039,8 +1629,272 @@
     document.body.style.overflow = '';
   }
 
+  function showToast(message) {
+    if (!toast || !toastText || !message) return;
+    window.clearTimeout(toastTimer);
+    toastText.textContent = message;
+    toast.classList.add('show');
+    toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+
+  function openModal(modal) {
+    if (!modal) return;
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const firstField = modal.querySelector('input, select, button');
+    firstField?.focus();
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function closeAllModals() {
+    closeModal(expenseModal);
+    closeModal(goalModal);
+  }
+
+  function scrollToDashboardTarget(id) {
+    const target = document.getElementById(id);
+    if (!target) return false;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === `#${id}`);
+    });
+    if (window.innerWidth <= 700) closeSidebar();
+    return true;
+  }
+
+  function triggerDashboardAction(element) {
+    const target = element.dataset.scrollTarget;
+    if (target) scrollToDashboardTarget(target);
+    showToast(element.dataset.toast || 'Action sélectionnée.');
+  }
+
   burger.addEventListener('click', openSidebar);
   overlay.addEventListener('click', closeSidebar);
+
+  document.querySelectorAll('[data-toast], [data-scroll-target]').forEach(element => {
+    element.addEventListener('click', event => {
+      if (event.target.closest('a') && event.currentTarget !== event.target.closest('a')) return;
+      if (element.dataset.openExpense || element.dataset.openGoal) return;
+      triggerDashboardAction(element);
+    });
+
+    element.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      if (element.dataset.openExpense || element.dataset.openGoal) return;
+      triggerDashboardAction(element);
+    });
+  });
+
+  document.querySelectorAll('.nav-item[href^="#"], .card-action[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => {
+      const id = link.getAttribute('href').slice(1);
+      const didScroll = scrollToDashboardTarget(id);
+      if (didScroll || link.dataset.toast) event.preventDefault();
+      if (link.classList.contains('nav-item')) {
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item === link));
+        if (window.innerWidth <= 700) closeSidebar();
+      }
+      if (link.dataset.toast) showToast(link.dataset.toast);
+    });
+  });
+
+  document.querySelectorAll('.ia-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (!iaInput) return;
+      iaInput.value = chip.dataset.question || chip.textContent.trim();
+      iaInput.focus();
+      answerIaQuestion(iaInput.value);
+    });
+  });
+
+  document.querySelector('.ia-send')?.addEventListener('click', () => {
+    if (!iaInput) return;
+    const value = iaInput.value.trim();
+    if (!value) {
+      showToast('Écrivez une question ou choisissez une suggestion.');
+      return;
+    }
+    answerIaQuestion(value);
+  });
+
+  iaInput?.addEventListener('keydown', event => {
+    if (event.key !== 'Enter') return;
+    event.preventDefault();
+    const value = iaInput.value.trim();
+    if (value) answerIaQuestion(value);
+  });
+
+  document.querySelectorAll('[data-open-expense]').forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      openModal(expenseModal);
+    });
+  });
+
+  document.querySelectorAll('[data-open-goal]').forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      openModal(goalModal);
+    });
+
+    button.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      openModal(goalModal);
+    });
+  });
+
+  document.querySelectorAll('[data-close-modal]').forEach(button => {
+    button.addEventListener('click', closeAllModals);
+  });
+
+  document.querySelectorAll('.modal-overlay').forEach(modal => {
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal(modal);
+    });
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeAllModals();
+  });
+
+  expenseForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    const form = new FormData(expenseForm);
+    const name = String(form.get('name')).trim();
+    const amount = Number(form.get('amount'));
+    const payer = String(form.get('payer'));
+    const category = String(form.get('category'));
+    const date = String(form.get('date'));
+
+    if (!name || !Number.isFinite(amount) || amount <= 0) {
+      showToast('Complétez le nom et un montant valide.');
+      return;
+    }
+
+    addExpense({ name, amount, payer, category, date });
+    expenseForm.reset();
+    if (expenseDate) expenseDate.valueAsDate = new Date();
+    closeModal(expenseModal);
+    scrollToDashboardTarget('depenses');
+    showToast(`${name} ajoutée : ${formatEuros(amount, amount % 1 ? 2 : 0)}.`);
+  });
+
+  goalForm?.addEventListener('submit', event => {
+    event.preventDefault();
+    const form = new FormData(goalForm);
+    const name = String(form.get('name')).trim();
+    const saved = Number(form.get('saved'));
+    const target = Number(form.get('target'));
+    const date = String(form.get('date'));
+
+    if (!name || !Number.isFinite(saved) || !Number.isFinite(target) || target <= 0) {
+      showToast('Complétez un objectif valide.');
+      return;
+    }
+
+    savingsTotal = Math.max(0, saved);
+    goalTarget = Math.max(1, target);
+    goalDeadline = date || goalDeadline;
+    updateGoal(name);
+    closeModal(goalModal);
+    scrollToDashboardTarget('epargne');
+    showToast('Objectif mis à jour.');
+  });
+
+  function addExpense({ name, amount, payer, category, date }) {
+    const ui = categoryUi[category] || { icon: '💳', bg: '#e8edfb' };
+    const item = document.createElement('div');
+    item.className = 'expense-item';
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.dataset.toast = `${name} : ${formatEuros(amount, amount % 1 ? 2 : 0)}, payé par ${payer}.`;
+    item.innerHTML = `
+      <div class="expense-icon" style="background:${ui.bg}">${ui.icon}</div>
+      <div class="expense-body">
+        <div class="expense-name"></div>
+        <div class="expense-meta">${formatDateShort(date)} · ${payer} · ${category}</div>
+      </div>
+      <div class="expense-amount">-${formatEuros(amount, amount % 1 ? 2 : 0)}</div>
+    `;
+    item.querySelector('.expense-name').textContent = name;
+    item.addEventListener('click', () => showToast(item.dataset.toast));
+    item.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      showToast(item.dataset.toast);
+    });
+    expenseList?.prepend(item);
+    totalBudget += amount;
+    budgetValue.textContent = formatEuros(totalBudget, 2);
+  }
+
+  function updateGoal(name) {
+    const rawPct = (savingsTotal / goalTarget) * 100;
+    const pct = Math.min(100, Math.max(0, rawPct));
+    goalTitle.textContent = name;
+    goalSubtitle.textContent = `Objectif : ${formatEuros(goalTarget)} d'ici ${monthLabel(goalDeadline)}`;
+    goalPercent.textContent = `${pct.toLocaleString('fr-FR', { maximumFractionDigits: 1 })}%`;
+    goalSavedAmount.textContent = formatEuros(savingsTotal);
+    goalTargetAmount.textContent = `sur ${formatEuros(goalTarget)}`;
+    goalFill.style.width = `${pct}%`;
+    savingsValue.textContent = formatEuros(savingsTotal);
+    goalEta.innerHTML = pct >= 100
+      ? 'Objectif atteint. Vous pouvez maintenant définir le prochain palier.'
+      : `Il reste <strong style="color:var(--navy)">${formatEuros(goalTarget - savingsTotal)}</strong> à épargner avant ${monthLabel(goalDeadline)}.`;
+  }
+
+  function answerIaQuestion(question) {
+    addIaBubble(question, 'user');
+    iaInput.value = '';
+    const typing = addIaBubble('Analyse en cours...', 'assistant');
+
+    window.setTimeout(() => {
+      typing.innerHTML = buildIaAnswer(question);
+      showToast('Le conseiller IA a répondu.');
+    }, 420);
+  }
+
+  function addIaBubble(message, type) {
+    const bubble = document.createElement('div');
+    bubble.className = `ia-bubble ia-bubble--${type}`;
+    bubble.textContent = message;
+    iaThread.appendChild(bubble);
+    bubble.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return bubble;
+  }
+
+  function buildIaAnswer(question) {
+    const q = question.toLowerCase();
+    const remaining = Math.max(0, goalTarget - savingsTotal);
+    if (q.includes('pea')) {
+      return `Pour votre objectif, je garderais une partie liquide sur livret et je placerais le surplus long terme sur PEA. Avec <strong>${formatEuros(savingsTotal)}</strong> déjà épargnés, évitez de bloquer l'argent nécessaire à court terme.`;
+    }
+    if (q.includes('livret')) {
+      return `Pour une échéance proche, privilégiez la disponibilité : livret A ou LDDS pour la sécurité, puis PEA seulement pour l'argent que vous pouvez laisser investi plusieurs années.`;
+    }
+    if (q.includes('crédit') || q.includes('credit') || q.includes('prêt') || q.includes('pret')) {
+      return `Simulation rapide : il vous manque encore <strong>${formatEuros(remaining)}</strong> d'apport. À 420 € d'épargne mensuelle, vous ajoutez environ <strong>${formatEuros(5040)}</strong> par an avant de lancer un dossier de crédit plus solide.`;
+    }
+    if (q.includes('budget') || q.includes('dépense') || q.includes('depense')) {
+      return `Votre budget mensuel est à <strong>${formatEuros(totalBudget, 2)}</strong>. La priorité serait de réduire l'alimentation variable et les sorties avant de toucher au logement ou aux charges fixes.`;
+    }
+    return `Je vous conseille de viser une règle simple : garder 2 à 3 mois de charges disponibles, puis automatiser <strong>420 €</strong> vers l'objectif. Prochaine action utile : vérifier les dépenses variables de la semaine.`;
+  }
+
+  periodSelect?.addEventListener('change', () => {
+    showToast(`Période affichée : ${periodSelect.value}.`);
+  });
 </script>
 
 </body>
